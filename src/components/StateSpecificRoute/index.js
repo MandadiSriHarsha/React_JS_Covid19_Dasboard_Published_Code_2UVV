@@ -224,7 +224,7 @@ class StateSpecificRoute extends Component {
   }
 
   startFetchingStateSpecificRouteData = () => {
-    this.setState({pageStatus: 'LOADING'}, this.fetchingStateSpecificRouteData)
+    this.setState({pageStatus: 'LOADING'}, this.fetchStateSpecificRouteData)
   }
 
   fetchStateSpecificRouteData = async () => {
@@ -521,6 +521,32 @@ class StateSpecificRoute extends Component {
     </div>
   )
 
+  renderStateSpecificRouteRouteFailureComponent = () => (
+    <div className="state-specific-route-route-failure-bg-container">
+      <p className="route-failure-heading">
+        Looks like you have provided an invalid STATE CODE, make sure the state
+        code is correct
+      </p>
+      <p className="route-failure-description">
+        Below are the different state codes for respective states make sure to
+        use the below state codes only in the url and press enter key or go back
+        to home page and reselect the required state option.
+      </p>
+      <ul className="state-codes-list-bg-container">
+        {statesList.map(eachitem => (
+          <li className="states-code-list-item">
+            <p className="states-code-list-item-heading">
+              {eachitem.state_name}
+            </p>
+            <p className="states-code-list-item-description">
+              [ {eachitem.state_code} ]
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+
   renderStateSpecificRoute = () => {
     const {pageStatus} = this.state
     switch (pageStatus) {
@@ -532,6 +558,8 @@ class StateSpecificRoute extends Component {
         return this.renderStateSpecificRouteSuccessComponent()
       case 'NETWORK FAILURE':
         return this.renderStateSpecificRouteNetworkFailureComponent()
+      case 'ROUTE FAILURE':
+        return this.renderStateSpecificRouteRouteFailureComponent()
       default:
         return null
     }
@@ -541,7 +569,9 @@ class StateSpecificRoute extends Component {
     return (
       <>
         <Header />
-        {this.renderStateSpecificRoute()}
+        <div className="state-specific-route-temp-container">
+          {this.renderStateSpecificRoute()}
+        </div>
       </>
     )
   }

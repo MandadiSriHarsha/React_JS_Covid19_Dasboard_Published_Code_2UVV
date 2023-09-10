@@ -39,6 +39,10 @@ class StateSpecificChart extends Component {
   }
 
   componentDidMount() {
+    this.startFetchingStateSpecificChartData()
+  }
+
+  startFetchingStateSpecificChartData = () => {
     this.setState({pageStatus: 'LOADING'}, this.fetchStateSpecificChartData)
   }
 
@@ -48,7 +52,6 @@ class StateSpecificChart extends Component {
     const response = await fetch(url)
     if (response.ok === true) {
       const data = await response.json()
-      console.log(data)
       const dateKeys = Object.keys(data[stateId].dates)
       const confirmedBarList = dateKeys.map(eachitem => ({
         date: new Date(eachitem),
@@ -116,6 +119,15 @@ class StateSpecificChart extends Component {
         deceasedCasesBarList: updatedDeceasedBarList,
         testedCasesBarList: updatedTestedBarList,
       })
+    } else {
+      this.setState({
+        pageStatus: 'FAILURE',
+        confirmedCasesBarList: [],
+        activeCasesBarList: [],
+        recoveredCasesBarList: [],
+        deceasedCasesBarList: [],
+        testedCasesBarList: [],
+      })
     }
   }
 
@@ -125,7 +137,7 @@ class StateSpecificChart extends Component {
     </div>
   )
 
-  renderChartCard = () => {
+  renderChartSuccessCard = () => {
     const {
       confirmedCasesBarList,
       activeCasesBarList,
@@ -185,7 +197,7 @@ class StateSpecificChart extends Component {
             </p>
             <LineChart
               className="line-chart"
-              width={730}
+              width={800}
               height={450}
               data={confirmedCasesBarList}
               margin={{top: 5, right: 30, left: 20, bottom: 5}}
@@ -211,7 +223,7 @@ class StateSpecificChart extends Component {
             </p>
             <LineChart
               className="line-chart"
-              width={730}
+              width={800}
               height={450}
               data={activeCasesBarList}
               margin={{top: 5, right: 30, left: 20, bottom: 5}}
@@ -237,7 +249,7 @@ class StateSpecificChart extends Component {
             </p>
             <LineChart
               className="line-chart"
-              width={730}
+              width={800}
               height={450}
               data={recoveredCasesBarList}
               margin={{top: 5, right: 30, left: 20, bottom: 5}}
@@ -263,7 +275,7 @@ class StateSpecificChart extends Component {
             </p>
             <LineChart
               className="line-chart"
-              width={730}
+              width={800}
               height={450}
               data={deceasedCasesBarList}
               margin={{top: 5, right: 30, left: 20, bottom: 5}}
@@ -289,7 +301,7 @@ class StateSpecificChart extends Component {
             </p>
             <LineChart
               className="line-chart"
-              width={730}
+              width={800}
               height={450}
               data={testedCasesBarList}
               margin={{top: 5, right: 30, left: 20, bottom: 5}}
@@ -314,13 +326,27 @@ class StateSpecificChart extends Component {
     )
   }
 
+  renderChartFailureCard = () => (
+    <div className="chart-failure-bg-container">
+      <button
+        type="button"
+        className="chart-failure-button"
+        onClick={this.startFetchingStateSpecificChartData}
+      >
+        Refresh
+      </button>
+    </div>
+  )
+
   renderStateSpecificChart = () => {
     const {pageStatus} = this.state
     switch (pageStatus) {
       case 'LOADING':
         return this.renderChartLoaderCard()
       case 'SUCCESS':
-        return this.renderChartCard()
+        return this.renderChartSuccessCard()
+      case 'FAILURE':
+        return this.renderChartFailureCard()
       default:
         return null
     }

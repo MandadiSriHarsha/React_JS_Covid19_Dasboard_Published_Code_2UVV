@@ -1,5 +1,15 @@
+.state-specific-route-temp-container {
+  min-height: 95vh;
+  width: 100%;
+  background-color: #161625;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+}
+
 .state-specific-route-loading-bg-container {
-  min-height: 90vh;
+  height: 50vh;
+  margin: 0px 0px 0px 0px;
+  padding: 30px 0px 30px 0px;
   width: 100%;
   background-color: #161625;
   display: flex;
@@ -9,14 +19,13 @@
 }
 
 .state-specific-route-success-bg-container {
-  min-height: 95vh;
   width: 100%;
   background-color: #161625;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
+  padding: 0px 0px 30px 0px;
 }
 
 .state-specific-route-success-component-header-card {
@@ -354,4 +363,83 @@
   .state-specific-route-network-failure-button {
     font-size: 20px;
   }
+}
+
+.state-specific-route-route-failure-bg-container {
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #161625;
+  padding: 30px 50px 30px 50px;
+}
+
+.route-failure-heading {
+  width: 100%;
+  color: #ffffff;
+  text-align: left;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+  font-size: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .route-failure-heading {
+    font-size: 20px;
+  }
+}
+
+.route-failure-description {
+  width: 100%;
+  color: #ffffff;
+  text-align: left;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 35px 0px;
+  font-size: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .route-failure-description {
+    font-size: 20px;
+  }
+}
+
+.state-codes-list-bg-container {
+  width: 100%;
+  list-style-type: none;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.states-code-list-item {
+  width: 100%;
+  max-width: 200px;
+  padding: 0px 0px 0px 0px;
+  margin: 15px 20px 15px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.states-code-list-item-heading {
+  width: 70%;
+  word-wrap: break-word;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.states-code-list-item-description {
+  width: 30%;
+  word-wrap: break-word;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  color: #ffffff;
+  font-size: 18px;
 }
