@@ -1,14 +1,15 @@
-.loader-bg-container {
-  min-height: 100vh;
+.state-specific-route-loading-bg-container {
+  min-height: 90vh;
   width: 100%;
+  background-color: #161625;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.state-specific-route-bg-container {
-  min-height: 100vh;
+.state-specific-route-success-bg-container {
+  min-height: 95vh;
   width: 100%;
   background-color: #161625;
   display: flex;
@@ -18,11 +19,11 @@
   padding: 0px 0px 0px 0px;
 }
 
-.state-specific-route-header-card {
+.state-specific-route-success-component-header-card {
   width: 90%;
-  max-width: 1100px;
-  margin: 30px 0px 0px 0px;
-  padding: 0px 20px 0px 20px;
+  max-width: 1200px;
+  margin: 0px 0px 0px 0px;
+  padding: 40px 20px 0px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -33,7 +34,7 @@
 .header-card-title-card {
   width: 100%;
   margin: 0px 0px 0px 0px;
-  padding: 0px 0px 20px 0px;
+  padding: 0px 0px 40px 0px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -51,6 +52,7 @@
   width: 100%;
   max-width: 200px;
   color: #0ea5e9;
+  border: 2px solid #0ea5e9;
   font-weight: 500;
   font-size: 16px;
   text-align: center;
@@ -78,25 +80,25 @@
   }
 }
 
-.header-card-tested-card {
+.header-card-status-card {
   width: 100%;
   margin: 0px 0px 0px 0px;
-  padding: 0px 0px 20px 0px;
+  padding: 0px 0px 40px 0px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
 @media screen and (min-width: 500px) {
-  .header-card-tested-card {
+  .header-card-status-card {
     width: 50%;
   }
 }
 
-.header-card-tested-card-heading {
+.header-card-status-card-heading {
   font-size: 14px;
   color: #94a3b8;
-  text-align: left;
+  text-align: right;
   font-weight: 500;
   width: 100%;
   margin: 0px 0px 10px 0px;
@@ -104,45 +106,33 @@
 }
 
 @media screen and (min-width: 500px) {
-  .header-card-tested-card-heading {
+  .header-card-status-card-heading {
     text-align: right;
   }
 }
 
-@media screen and (min-width: 768px) {
-  .header-card-tested-card-heading {
-    font-size: 16px;
-  }
-}
-
-.header-card-tested-card-description {
+.header-card-status-card-description {
   color: #94a3b8;
   font-size: 16px;
   font-weight: 500;
   width: 100%;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  text-align: left;
-}
-
-@media screen and (min-width: 500px) {
-  .header-card-tested-card-description {
-    text-align: right;
-  }
+  text-align: right;
 }
 
 @media screen and (min-width: 768px) {
-  .header-card-tested-card-description {
+  .header-card-status-card-description {
     font-size: 18px;
   }
 }
 
-.state-specific-route-overall-stats-card {
-  list-style-type: none;
+.state-specific-route-success-component-overall-stats-card {
   width: 90%;
-  max-width: 1100px;
-  margin: 30px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
+  max-width: 1200px;
+  list-style-type: none;
+  padding: 35px 0px 35px 0px;
+  margin: 0px 0px 0px 0px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -150,54 +140,61 @@
 }
 
 .state-specific-overall-stats-card {
+  width: 100%;
+  max-width: 210px;
+  padding: 0px 0px 0px 0px;
+  margin: 20px 30px 20px 30px;
+  border: none;
+}
+
+.state-specific-overall-stats-card-button {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 30px 20px 30px;
-  margin: 20px 35px 20px 35px;
-  border-radius: 10px;
-  border: none;
   background: none;
+  border: none;
   cursor: pointer;
   outline: none;
-  width: 100%;
+  border-radius: 10px;
+  padding: 25px 30px 25px 30px;
 }
 
-.state-specific-overall-stats-card-heading {
+.state-specific-overall-stats-card-button-heading {
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 20px 0px;
 }
 
 @media screen and (min-width: 768px) {
-  .state-specific-overall-stats-card-heading {
-    font-size: 18px;
+  .state-specific-overall-stats-card-button-heading {
+    font-size: 20px;
   }
 }
 
-.state-specific-overall-stats-card-image {
-  height: 35px;
-  width: 35px;
+.state-specific-overall-stats-card-button-image {
+  height: 40px;
+  width: 40px;
   margin: 0px 0px 20px 0px;
 }
 
 @media screen and (min-width: 768px) {
-  .state-specific-overall-stats-card-image {
-    height: 40px;
-    width: 40px;
+  .state-specific-overall-stats-card-button-image {
+    height: 45px;
+    width: 45px;
   }
 }
 
-.state-specific-overall-stats-card-description {
+.state-specific-overall-stats-card-button-description {
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  font-size: 22px;
+  font-size: 23px;
   text-align: center;
 }
 
 @media screen and (min-width: 768px) {
-  .state-specific-overall-stats-card-description {
+  .state-specific-overall-stats-card-button-description {
     font-size: 25px;
   }
 }
@@ -250,70 +247,43 @@
   background-color: #212230;
 }
 
-.state-specific-district-wise-stats-bg-container {
+.state-specific-route-success-component-district-wise-stats-bg-container {
   width: 90%;
-  max-width: 1100px;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 50px 0px 50px 0px;
+  padding: 30px 0px 50px 0px;
   margin: 0px 0px 0px 0px;
+}
+
+.top-districts-heading {
+  font-size: 18px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 10px 10px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .top-districts-heading {
+    font-size: 20px;
+  }
 }
 
 .confirmed-districts-heading {
   color: #ff073a;
-  font-size: 18px;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 10px 10px;
-  font-weight: 500;
-}
-
-@media screen and (min-width: 768px) {
-  .confirmed-districts-heading {
-    font-size: 20px;
-  }
 }
 
 .active-districts-heading {
   color: #007bff;
-  font-size: 18px;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 10px 10px;
-  font-weight: 500;
-}
-
-@media screen and (min-width: 768px) {
-  .active-districts-heading {
-    font-size: 20px;
-  }
 }
 
 .recovered-districts-heading {
   color: #28a745;
-  font-size: 18px;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 10px 10px;
-  font-weight: 500;
-}
-
-@media screen and (min-width: 768px) {
-  .recovered-districts-heading {
-    font-size: 20px;
-  }
 }
 
 .deceased-districts-heading {
   color: #6c757d;
-  font-size: 18px;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 10px 10px;
-  font-weight: 500;
-}
-
-@media screen and (min-width: 768px) {
-  .deceased-districts-heading {
-    font-size: 20px;
-  }
 }
 
 .state-specific-district-wise-stats-list-bg-container {
@@ -334,7 +304,7 @@
   flex-direction: row;
   align-items: center;
   padding: 0px 0px 0px 0px;
-  margin: 10px 10px 10px 10px;
+  margin: 13px 13px 13px 13px;
   color: #cbd5e1;
   font-weight: 400;
   font-size: 16px;
@@ -355,4 +325,33 @@
 .district-wise-stat-item-description {
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
+}
+
+.state-specific-route-network-failure-bg-container {
+  min-height: 90vh;
+  width: 100%;
+  background-color: #161625;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.state-specific-route-network-failure-button {
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  outline: none;
+  background-color: #2563eb;
+  color: #ffffff;
+  margin: 0px 0px 0px 0px;
+  padding: 13px 25px 13px 25px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .state-specific-route-network-failure-button {
+    font-size: 20px;
+  }
 }

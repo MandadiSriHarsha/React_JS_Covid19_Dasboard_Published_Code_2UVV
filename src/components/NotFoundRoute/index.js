@@ -22,7 +22,7 @@ const NotFoundRoute = props => {
         type="button"
         onClick={onNavigateToHomeScreen}
       >
-        Redirect To Home Page
+        To Home Page
       </button>
     </div>
   )

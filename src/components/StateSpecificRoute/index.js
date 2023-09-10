@@ -175,33 +175,24 @@ const StateSpecificOverAllStatsCard = props => {
     onChangeCategory(categoryValue)
   }
   return (
-    <li
-      style={{
-        width: '100%',
-        maxWidth: '200px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-      id={stateCardId}
-    >
+    <li className="state-specific-overall-stats-card" id={stateCardId}>
       <button
         onClick={changeCategory}
-        className={`state-specific-overall-stats-card ${itemClassName} ${isActive}`}
+        className={`state-specific-overall-stats-card-button ${itemClassName} ${isActive}`}
         type="button"
       >
         <p
-          className={`state-specific-overall-stats-card-heading ${itemHeadingClassName}`}
+          className={`state-specific-overall-stats-card-button-heading ${itemHeadingClassName}`}
         >
           {itemHeadingValue}
         </p>
         <img
           src={itemImageUrl}
-          className="state-specific-overall-stats-card-image"
+          className="state-specific-overall-stats-card-button-image"
           alt={itemImageAltText}
         />
         <p
-          className={`state-specific-overall-stats-card-description ${itemDescriptionClassName}`}
+          className={`state-specific-overall-stats-card-button-description ${itemDescriptionClassName}`}
         >
           {itemDescriptionValue}
         </p>
@@ -229,7 +220,11 @@ class StateSpecificRoute extends Component {
   }
 
   componentDidMount() {
-    this.setState({pageStatus: 'LOADING'}, this.fetchStateSpecificRouteData)
+    this.startFetchingStateSpecificRouteData()
+  }
+
+  startFetchingStateSpecificRouteData = () => {
+    this.setState({pageStatus: 'LOADING'}, this.fetchingStateSpecificRouteData)
   }
 
   fetchStateSpecificRouteData = async () => {
@@ -239,102 +234,111 @@ class StateSpecificRoute extends Component {
     const isStateIdValid = statesList.filter(
       eachitem => eachitem.state_code === stateId,
     )
-    const updatedStateId =
-      isStateIdValid.length > 0 ? isStateIdValid[0].state_code : 'AP'
-    const url = 'https://apis.ccbp.in/covid19-state-wise-data/'
-    const response = await fetch(url)
-    if (response.ok === true) {
-      const data = await response.json()
+    let retrievedStateId
+    if (isStateIdValid.length > 0) {
+      retrievedStateId = isStateIdValid[0].state_code
+      const url = 'https://apis.ccbp.in/covid19-state-wise-data/'
+      const response = await fetch(url)
+      if (response.ok === true) {
+        const data = await response.json()
 
-      const stateObj = data[updatedStateId]
+        const stateObj = data[retrievedStateId]
 
-      const stateName = statesList.filter(
-        eachitem => eachitem.state_code === updatedStateId,
-      )
+        const stateName = statesList.filter(
+          eachitem => eachitem.state_code === retrievedStateId,
+        )
 
-      const cumulativeTestedCasesCount = stateObj.total.tested
-      const cumulativeConfirmedCases = stateObj.total.confirmed
-      const cumulativeActiveCases =
-        stateObj.total.confirmed -
-        (stateObj.total.recovered + stateObj.total.deceased)
-      const cumulativeRecoveredCases = stateObj.total.recovered
-      const cumulativeDeceasedCases = stateObj.total.deceased
+        const cumulativeTestedCasesCount = stateObj.total.tested
+        const cumulativeConfirmedCases = stateObj.total.confirmed
+        const cumulativeActiveCases =
+          stateObj.total.confirmed -
+          (stateObj.total.recovered + stateObj.total.deceased)
+        const cumulativeRecoveredCases = stateObj.total.recovered
+        const cumulativeDeceasedCases = stateObj.total.deceased
 
-      const districtNamesKeys = Object.keys(stateObj.districts)
+        const districtNamesKeys = Object.keys(stateObj.districts)
 
-      const cumulativeDistrictWiseConfirmedCasesList = districtNamesKeys.map(
-        eachitem => {
-          const casesCount =
-            typeof stateObj.districts[eachitem].total.confirmed === 'number'
-              ? stateObj.districts[eachitem].total.confirmed
-              : 0
-          return {
-            districtName: eachitem,
-            casesCount,
-          }
-        },
-      )
-      const cumulativeDistrictWiseActiveCasesList = districtNamesKeys.map(
-        eachitem => {
-          const confirmedValue = stateObj.districts[eachitem].total.confirmed
-          const recoveredValue = stateObj.districts[eachitem].total.recovered
-          const deceasedValue = stateObj.districts[eachitem].total.deceased
-          let casesCount
-          if (
-            typeof confirmedValue === 'number' &&
-            typeof recoveredValue === 'number' &&
-            typeof deceasedValue === 'number'
-          ) {
-            casesCount = confirmedValue - (recoveredValue + deceasedValue)
-          } else {
-            casesCount = 0
-          }
-          return {
-            districtName: eachitem,
-            casesCount,
-          }
-        },
-      )
-      const cumulativeDistrictWiseRecoveredCasesList = districtNamesKeys.map(
-        eachitem => {
-          const casesCount =
-            typeof stateObj.districts[eachitem].total.recovered === 'number'
-              ? stateObj.districts[eachitem].total.recovered
-              : 0
-          return {
-            districtName: eachitem,
-            casesCount,
-          }
-        },
-      )
-      const cumulativeDistrictWiseDeceasedCasesList = districtNamesKeys.map(
-        eachitem => {
-          const casesCount =
-            typeof stateObj.districts[eachitem].total.deceased === 'number'
-              ? stateObj.districts[eachitem].total.deceased
-              : 0
-          return {
-            districtName: eachitem,
-            casesCount,
-          }
-        },
-      )
+        const cumulativeDistrictWiseConfirmedCasesList = districtNamesKeys.map(
+          eachitem => {
+            const casesCount =
+              typeof stateObj.districts[eachitem].total.confirmed === 'number'
+                ? stateObj.districts[eachitem].total.confirmed
+                : 0
+            return {
+              districtName: eachitem,
+              casesCount,
+            }
+          },
+        )
 
-      this.setState({
-        pageStatus: 'SUCCESS',
-        totalConfirmedCases: cumulativeConfirmedCases,
-        totalActiveCases: cumulativeActiveCases,
-        totalRecoveredCases: cumulativeRecoveredCases,
-        totalDeceasedCases: cumulativeDeceasedCases,
-        totalTestedCasesCount: cumulativeTestedCasesCount,
-        totalDistrictWiseConfirmedCasesList: cumulativeDistrictWiseConfirmedCasesList,
-        totalDistrictWiseActiveCasesList: cumulativeDistrictWiseActiveCasesList,
-        totalDistrictWiseRecoveredCasesList: cumulativeDistrictWiseRecoveredCasesList,
-        totalDistrictWiseDeceasedCasesList: cumulativeDistrictWiseDeceasedCasesList,
-        stateName: stateName[0].state_name,
-        lastUpdatedDate: stateObj.meta.last_updated,
-        stateId: updatedStateId,
-      })
+        const cumulativeDistrictWiseActiveCasesList = districtNamesKeys.map(
+          eachitem => {
+            const confirmedValue = stateObj.districts[eachitem].total.confirmed
+            const recoveredValue = stateObj.districts[eachitem].total.recovered
+            const deceasedValue = stateObj.districts[eachitem].total.deceased
+            let casesCount
+            if (
+              typeof confirmedValue === 'number' &&
+              typeof recoveredValue === 'number' &&
+              typeof deceasedValue === 'number'
+            ) {
+              casesCount = confirmedValue - (recoveredValue + deceasedValue)
+            } else {
+              casesCount = 0
+            }
+            return {
+              districtName: eachitem,
+              casesCount,
+            }
+          },
+        )
+
+        const cumulativeDistrictWiseRecoveredCasesList = districtNamesKeys.map(
+          eachitem => {
+            const casesCount =
+              typeof stateObj.districts[eachitem].total.recovered === 'number'
+                ? stateObj.districts[eachitem].total.recovered
+                : 0
+            return {
+              districtName: eachitem,
+              casesCount,
+            }
+          },
+        )
+
+        const cumulativeDistrictWiseDeceasedCasesList = districtNamesKeys.map(
+          eachitem => {
+            const casesCount =
+              typeof stateObj.districts[eachitem].total.deceased === 'number'
+                ? stateObj.districts[eachitem].total.deceased
+                : 0
+            return {
+              districtName: eachitem,
+              casesCount,
+            }
+          },
+        )
+
+        this.setState({
+          pageStatus: 'SUCCESS',
+          totalConfirmedCases: cumulativeConfirmedCases,
+          totalActiveCases: cumulativeActiveCases,
+          totalRecoveredCases: cumulativeRecoveredCases,
+          totalDeceasedCases: cumulativeDeceasedCases,
+          totalTestedCasesCount: cumulativeTestedCasesCount,
+          totalDistrictWiseConfirmedCasesList: cumulativeDistrictWiseConfirmedCasesList,
+          totalDistrictWiseActiveCasesList: cumulativeDistrictWiseActiveCasesList,
+          totalDistrictWiseRecoveredCasesList: cumulativeDistrictWiseRecoveredCasesList,
+          totalDistrictWiseDeceasedCasesList: cumulativeDistrictWiseDeceasedCasesList,
+          stateName: stateName[0].state_name,
+          lastUpdatedDate: stateObj.meta.last_updated,
+          stateId: retrievedStateId,
+        })
+      } else {
+        this.setState({pageStatus: 'NETWORK FAILURE'})
+      }
+    } else {
+      this.setState({pageStatus: 'ROUTE FAILURE'})
     }
   }
 
@@ -342,13 +346,16 @@ class StateSpecificRoute extends Component {
     this.setState({defaultSelectedCategory: value})
   }
 
-  renderLoaderCard = () => (
-    <div className="loader-bg-container" id="stateDetailsLoader">
+  renderStateSpecificRouteLoadingComponent = () => (
+    <div
+      className="state-specific-route-loading-bg-container"
+      id="stateDetailsLoader"
+    >
       <Loader type="TailSpin" color="#00BBFF" height={60} width={60} />
     </div>
   )
 
-  renderSuccessCard = () => {
+  renderStateSpecificRouteSuccessComponent = () => {
     const {
       totalConfirmedCases,
       totalActiveCases,
@@ -367,78 +374,38 @@ class StateSpecificRoute extends Component {
     let districtWiseStatsList
     let districtWiseStatsListHeading
     if (defaultSelectedCategory === 'Confirmed') {
-      const referenceList = totalDistrictWiseConfirmedCasesList.map(
-        eachitem => eachitem.casesCount,
-      )
-      const sortedReferenceList = referenceList.sort()
-      const updatedList = sortedReferenceList.map(eachitem => {
-        const obj = totalDistrictWiseConfirmedCasesList.filter(
-          eachobj => eachobj.casesCount === eachitem,
-        )
-        return obj[0]
-      })
-      districtWiseStatsList = updatedList.sort().reverse()
+      districtWiseStatsList = totalDistrictWiseConfirmedCasesList.sort()
       districtWiseStatsListHeading = 'confirmed-districts-heading'
     } else if (defaultSelectedCategory === 'Active') {
-      const referenceList = totalDistrictWiseActiveCasesList.map(
-        eachitem => eachitem.casesCount,
-      )
-      const sortedReferenceList = referenceList.sort()
-      const updatedList = sortedReferenceList.map(eachitem => {
-        const obj = totalDistrictWiseActiveCasesList.filter(
-          eachobj => eachobj.casesCount === eachitem,
-        )
-        return obj[0]
-      })
-      districtWiseStatsList = updatedList.sort().reverse()
+      districtWiseStatsList = totalDistrictWiseActiveCasesList.sort()
       districtWiseStatsListHeading = 'active-districts-heading'
     } else if (defaultSelectedCategory === 'Recovered') {
-      const referenceList = totalDistrictWiseRecoveredCasesList.map(
-        eachitem => eachitem.casesCount,
-      )
-      const sortedReferenceList = referenceList.sort()
-      const updatedList = sortedReferenceList.map(eachitem => {
-        const obj = totalDistrictWiseRecoveredCasesList.filter(
-          eachobj => eachobj.casesCount === eachitem,
-        )
-        return obj[0]
-      })
-      districtWiseStatsList = updatedList.sort().reverse()
+      districtWiseStatsList = totalDistrictWiseRecoveredCasesList.sort()
       districtWiseStatsListHeading = 'recovered-districts-heading'
     } else {
-      const referenceList = totalDistrictWiseDeceasedCasesList.map(
-        eachitem => eachitem.casesCount,
-      )
-      const sortedReferenceList = referenceList.sort()
-      const updatedList = sortedReferenceList.map(eachitem => {
-        const obj = totalDistrictWiseDeceasedCasesList.filter(
-          eachobj => eachobj.casesCount === eachitem,
-        )
-        return obj[0]
-      })
-      districtWiseStatsList = updatedList.sort().reverse()
+      districtWiseStatsList = totalDistrictWiseDeceasedCasesList.sort()
       districtWiseStatsListHeading = 'deceased-districts-heading'
     }
     return (
       <div
         id="lineChartsContainer"
-        className="state-specific-route-bg-container"
+        className="state-specific-route-success-bg-container"
       >
-        <div className="state-specific-route-header-card">
+        <div className="state-specific-route-success-component-header-card">
           <div className="header-card-title-card">
             <h1 className="header-card-title-card-heading">{stateName}</h1>
             <p className="header-card-title-card-description">
               Last update on {new Date(lastUpdatedDate).toLocaleDateString()}.
             </p>
           </div>
-          <div className="header-card-tested-card">
-            <p className="header-card-tested-card-heading">Tested</p>
-            <p className="header-card-tested-card-description">
+          <div className="header-card-status-card">
+            <p className="header-card-status-card-heading">Tested</p>
+            <p className="header-card-status-card-description">
               {totalTestedCasesCount}
             </p>
           </div>
         </div>
-        <ul className="state-specific-route-overall-stats-card">
+        <ul className="state-specific-route-success-component-overall-stats-card">
           <StateSpecificOverAllStatsCard
             itemClassName="state-specific-overall-confirmed-cases-card"
             itemHeadingClassName="state-specific-overall-confirmed-cases-card-heading"
@@ -508,8 +475,12 @@ class StateSpecificRoute extends Component {
             stateCardId="stateSpecificDeceasedCasesContainer"
           />
         </ul>
-        <div className="state-specific-district-wise-stats-bg-container">
-          <h1 className={districtWiseStatsListHeading}>Top Districts</h1>
+        <div className="state-specific-route-success-component-district-wise-stats-bg-container">
+          <h1
+            className={`top-districts-heading ${districtWiseStatsListHeading}`}
+          >
+            Top Districts
+          </h1>
           <ul
             className="state-specific-district-wise-stats-list-bg-container"
             id="topDistrictsUnorderedList"
@@ -538,15 +509,29 @@ class StateSpecificRoute extends Component {
     )
   }
 
+  renderStateSpecificRouteNetworkFailureComponent = () => (
+    <div className="state-specific-route-network-failure-bg-container">
+      <button
+        className="state-specific-route-network-failure-button"
+        onClick={this.startFetchingStateSpecificData}
+        type="button"
+      >
+        Refresh
+      </button>
+    </div>
+  )
+
   renderStateSpecificRoute = () => {
     const {pageStatus} = this.state
     switch (pageStatus) {
       case 'INITIAL':
         return null
       case 'LOADING':
-        return this.renderLoaderCard()
+        return this.renderStateSpecificRouteLoadingComponent()
       case 'SUCCESS':
-        return this.renderSuccessCard()
+        return this.renderStateSpecificRouteSuccessComponent()
+      case 'NETWORK FAILURE':
+        return this.renderStateSpecificRouteNetworkFailureComponent()
       default:
         return null
     }
