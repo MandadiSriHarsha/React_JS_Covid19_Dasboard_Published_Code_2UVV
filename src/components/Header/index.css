@@ -1,0 +1,224 @@
+.application-navbar {
+  width: 100%;
+  background-color: #1e1e30 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .application-navbar {
+    border-bottom: 1px solid #3b82f6;
+  }
+}
+
+.navbar-display-card {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+  margin: 0px 0px 0px 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-display-card {
+    padding: 28px 20px 28px 20px;
+  }
+}
+
+.navbar-title {
+  color: #ffffff;
+  text-decoration: none !important;
+  cursor: pointer;
+  outline: none;
+  margin: 0px 10px 0px 10px;
+  padding: 0px 0px 0px 0px;
+}
+
+.navbar-title-text {
+  font-family: 'Roboto';
+  color: #ffffff;
+  font-size: 18px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-title-text {
+    font-size: 20px;
+  }
+}
+
+.navbar-title-text-span {
+  color: #3b82f6;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.navbar-menu-card {
+  width: 100%;
+  background-color: #1e1e30 !important;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.mobile-navbar-show-menu-card-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 10px 0px 10px;
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .mobile-navbar-show-menu-card-button {
+    display: none;
+  }
+}
+
+.mobile-navbar-show-menu-card-button-icon {
+  height: 30px;
+  width: 30px;
+  color: #ffffff;
+}
+
+.desktop-navbar-menu-card {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  display: none;
+  list-style-type: none;
+}
+
+@media screen and (min-width: 768px) {
+  .desktop-navbar-menu-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.desktop-navbar-menu-card-item {
+  color: #94a3b8;
+  text-decoration: none !important;
+  cursor: pointer;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 20px 0px 0px;
+  font-size: 20px;
+  font-weight: 400;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.apply-desktop-navbar-menu-card-home-item-style {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding: 0px 0px 2px 0px;
+  font-weight: 500;
+}
+
+.apply-desktop-navbar-menu-card-vaccination-item-style {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding: 0px 0px 2px 0px;
+  font-weight: 500;
+}
+
+.apply-desktop-navbar-menu-card-about-item-style {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding: 0px 0px 2px 0px;
+  font-weight: 500;
+}
+
+.mobile-navbar-menu-card {
+  background-color: #161625;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 5px 20px;
+  margin: 0px 0px 0px 0px;
+  border-bottom: 1px solid #3b82f6;
+}
+
+@media screen and (min-width: 768px) {
+  .mobile-navbar-menu-card {
+    display: none;
+  }
+}
+
+.mobile-navbar-menu-card-content-card {
+  margin: 0px 10px 0px 10px;
+  padding: 0px 0px 0px 0px;
+  list-style-type: none;
+}
+
+.mobile-navbar-menu-card-content-card-item {
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 15px 0px;
+  cursor: pointer;
+  outline: none;
+}
+
+.mobile-navbar-menu-card-content-card-option-item {
+  color: #94a3b8;
+  text-decoration: none !important;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.apply-mobile-navbar-menu-card-content-card-home-option-item-style {
+  color: #ffffff;
+  border: none;
+  font-weight: 500;
+  border-left: 2px solid #ffffff;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 7px;
+}
+
+.apply-mobile-navbar-menu-card-content-card-vaccination-option-item-style {
+  color: #ffffff;
+  border: none;
+  font-weight: 500;
+  border-left: 2px solid #ffffff;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 7px;
+}
+
+.apply-mobile-navbar-menu-card-content-card-about-option-item-style {
+  color: #ffffff;
+  border: none;
+  font-weight: 500;
+  border-left: 2px solid #ffffff;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 7px;
+}
+
+.mobile-navbar-close-menu-card-button {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+  margin: 0px 10px 0px 10px;
+  padding: 0px 0px 0px 0px;
+}
+
+.mobile-navbar-close-menu-card-button-icon {
+  height: 25px;
+  width: 25px;
+  color: #ffffff;
+}

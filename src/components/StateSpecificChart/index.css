@@ -1,0 +1,141 @@
+.chart-loader-bg-container {
+  height: 200px;
+  width: 90%;
+  max-width: 1000px;
+  padding: 20px 10px 20px 10px;
+  margin: 0px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.bar-chart-bg-container {
+  width: 90%;
+  max-width: 1100px;
+  overflow-x: auto;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.spread-trends-bg-container {
+  width: 90%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0px 30px 0px;
+  margin: 0px 0px 0px 0px;
+}
+
+.spread-trends-heading {
+  color: #cbd5e1;
+  font-weight: 500;
+  font-size: 23px;
+  text-align: left;
+  width: 100%;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 10px 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .spread-trends-heading {
+    font-size: 28px;
+  }
+}
+
+.bar-chart {
+  margin: auto;
+}
+
+.confirmed-line-chart-bg-container {
+  width: 90%;
+  max-width: 1100px;
+  overflow-x: auto;
+  background-color: #331427;
+  border-radius: 10px;
+  padding: 20px 10px 20px 10px;
+  margin: 20px 0px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.line-chart {
+  margin: auto !important;
+}
+
+.active-line-chart-bg-container {
+  width: 90%;
+  max-width: 1000px;
+  overflow-x: auto;
+  background-color: #132240;
+  border-radius: 10px;
+  padding: 20px 10px 20px 10px;
+  margin: 20px 0px 20px 0px;
+}
+
+.recovered-line-chart-bg-container {
+  width: 90%;
+  max-width: 1000px;
+  overflow-x: auto;
+  background-color: #182829;
+  border-radius: 10px;
+  padding: 20px 10px 20px 10px;
+  margin: 20px 0px 20px 0px;
+}
+
+.deceased-line-chart-bg-container {
+  width: 90%;
+  max-width: 1000px;
+  overflow-x: auto;
+  background-color: #1c1c2b;
+  border-radius: 10px;
+  padding: 20px 10px 20px 10px;
+  margin: 20px 0px 20px 0px;
+}
+
+.tested-line-chart-bg-container {
+  width: 90%;
+  max-width: 1000px;
+  overflow-x: auto;
+  background-color: #230f41;
+  border-radius: 10px;
+  padding: 20px 10px 20px 10px;
+  margin: 20px 0px 20px 0px;
+}
+
+.line-chart-heading {
+  width: 90%;
+  text-align: right;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .line-chart-heading {
+    font-size: 16px;
+  }
+}
+
+.confirmed-line-chart-heading {
+  color: #ff073a;
+}
+
+.active-line-chart-heading {
+  color: #007bbf;
+}
+
+.recovered-line-chart-heading {
+  color: #27a243;
+}
+
+.deceased-line-chart-heading {
+  color: #6c757d;
+}
+
+.tested-line-chart-heading {
+  color: #9673b9;
+}

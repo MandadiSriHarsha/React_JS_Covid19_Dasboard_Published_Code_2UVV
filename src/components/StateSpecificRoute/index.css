@@ -1,0 +1,358 @@
+.loader-bg-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.state-specific-route-bg-container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #161625;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.state-specific-route-header-card {
+  width: 90%;
+  max-width: 1100px;
+  margin: 30px 0px 0px 0px;
+  padding: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.header-card-title-card {
+  width: 100%;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media screen and (min-width: 500px) {
+  .header-card-title-card {
+    width: 50%;
+  }
+}
+
+.header-card-title-card-heading {
+  background-color: rgba(2, 132, 199, 0.16);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 200px;
+  color: #0ea5e9;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  margin: 0px 0px 10px 0px;
+  padding: 12px 15px 12px 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .header-card-title-card-heading {
+    font-size: 18px;
+  }
+}
+
+.header-card-title-card-description {
+  font-size: 14px;
+  text-align: left;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  color: #cbd5e1;
+}
+
+@media screen and (min-width: 768px) {
+  .header-card-title-card-description {
+    font-size: 16px;
+  }
+}
+
+.header-card-tested-card {
+  width: 100%;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media screen and (min-width: 500px) {
+  .header-card-tested-card {
+    width: 50%;
+  }
+}
+
+.header-card-tested-card-heading {
+  font-size: 14px;
+  color: #94a3b8;
+  text-align: left;
+  font-weight: 500;
+  width: 100%;
+  margin: 0px 0px 10px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+@media screen and (min-width: 500px) {
+  .header-card-tested-card-heading {
+    text-align: right;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header-card-tested-card-heading {
+    font-size: 16px;
+  }
+}
+
+.header-card-tested-card-description {
+  color: #94a3b8;
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  text-align: left;
+}
+
+@media screen and (min-width: 500px) {
+  .header-card-tested-card-description {
+    text-align: right;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header-card-tested-card-description {
+    font-size: 18px;
+  }
+}
+
+.state-specific-route-overall-stats-card {
+  list-style-type: none;
+  width: 90%;
+  max-width: 1100px;
+  margin: 30px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.state-specific-overall-stats-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 30px 20px 30px;
+  margin: 20px 35px 20px 35px;
+  border-radius: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+}
+
+.state-specific-overall-stats-card-heading {
+  text-align: center;
+  font-size: 16px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .state-specific-overall-stats-card-heading {
+    font-size: 18px;
+  }
+}
+
+.state-specific-overall-stats-card-image {
+  height: 35px;
+  width: 35px;
+  margin: 0px 0px 20px 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .state-specific-overall-stats-card-image {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.state-specific-overall-stats-card-description {
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  font-size: 22px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .state-specific-overall-stats-card-description {
+    font-size: 25px;
+  }
+}
+
+.state-specific-overall-confirmed-cases-card-heading {
+  color: #ff073a;
+}
+
+.state-specific-overall-confirmed-cases-card-description {
+  color: #ff073a;
+}
+
+.state-specific-overall-active-cases-card-heading {
+  color: #007bff;
+}
+
+.state-specific-overall-active-cases-card-description {
+  color: #007bff;
+}
+
+.state-specific-overall-recovered-cases-card-heading {
+  color: #28a745;
+}
+
+.state-specific-overall-recovered-cases-card-description {
+  color: #28a745;
+}
+
+.state-specific-overall-deceased-cases-card-heading {
+  color: #6c757d;
+}
+
+.state-specific-overall-deceased-cases-card-description {
+  color: #6c757d;
+}
+
+.apply-confirmed-bg-color {
+  background-color: #331427;
+}
+
+.apply-active-bg-color {
+  background-color: #132240;
+}
+
+.apply-recovered-bg-color {
+  background-color: #182829;
+}
+
+.apply-deceased-bg-color {
+  background-color: #212230;
+}
+
+.state-specific-district-wise-stats-bg-container {
+  width: 90%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 50px 0px 50px 0px;
+  margin: 0px 0px 0px 0px;
+}
+
+.confirmed-districts-heading {
+  color: #ff073a;
+  font-size: 18px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 10px 10px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .confirmed-districts-heading {
+    font-size: 20px;
+  }
+}
+
+.active-districts-heading {
+  color: #007bff;
+  font-size: 18px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 10px 10px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .active-districts-heading {
+    font-size: 20px;
+  }
+}
+
+.recovered-districts-heading {
+  color: #28a745;
+  font-size: 18px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 10px 10px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .recovered-districts-heading {
+    font-size: 20px;
+  }
+}
+
+.deceased-districts-heading {
+  color: #6c757d;
+  font-size: 18px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 10px 10px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .deceased-districts-heading {
+    font-size: 20px;
+  }
+}
+
+.state-specific-district-wise-stats-list-bg-container {
+  width: 100%;
+  list-style-type: none;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.state-specific-districts-wise-stats-item {
+  width: 50%;
+  max-width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 0px 0px 0px;
+  margin: 10px 10px 10px 10px;
+  color: #cbd5e1;
+  font-weight: 400;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+@media screen and (min-width: 768px) {
+  .state-specific-districts-wise-stats-item {
+    font-size: 18px;
+  }
+}
+
+.district-wise-stat-item-heading {
+  padding: 0px 0px 0px 0px;
+  margin: 0px 10px 0px 0px;
+}
+
+.district-wise-stat-item-description {
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+}

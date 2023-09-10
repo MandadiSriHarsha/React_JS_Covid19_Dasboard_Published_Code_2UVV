@@ -1,0 +1,140 @@
+.about-route-loading-bg-container {
+  min-height: 90vh;
+  width: 100%;
+  background-color: #161625;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-route-success-bg-container {
+  min-height: 90vh;
+  width: 100%;
+  background-color: #161625;
+  margin: 0px 0px 0px 0px;
+  padding: 25px 8px 25px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-route-success-content-card {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0px 0px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-route-success-content-card-heading {
+  color: #ffffff;
+  padding: 0px 0px 0px 0px;
+  margin: 10px 0px 20px 0px;
+  font-weight: 500;
+  font-size: 28px;
+}
+
+@media screen and (min-width: 768px) {
+  .about-route-success-heading {
+    font-size: 35px;
+  }
+}
+
+.about-route-success-content-card-description-1 {
+  color: #94a3b8;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  .about-route-success-description-1 {
+    font-size: 20px;
+  }
+}
+
+.about-route-success-content-card-description-2 {
+  color: #e2e8f0;
+  font-size: 18px;
+  margin: 0px 0px 40px 0px;
+  padding: 0px 0px 0px 0px;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  .about-route-success-description-2 {
+    font-size: 21px;
+  }
+}
+
+.about-route-success-faqs-list-bg-container {
+  width: 100%;
+  list-style-type: none;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+}
+
+.about-route-success-faqs-list-item {
+  margin: 0px 0px 35px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.about-route-success-faqs-list-item-heading {
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 10px 0px;
+  font-weight: 400;
+  color: #94a3b8;
+  font-size: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .about-route-success-faqs-list-item-heading {
+    font-size: 20px;
+  }
+}
+
+.about-route-success-faqs-list-item-description {
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 23px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #007bff;
+  word-wrap: break-word;
+}
+
+@media screen and (min-width: 768px) {
+  .about-route-success-faqs-list-item-description {
+    font-size: 20px;
+  }
+}
+
+.about-route-failure-bg-container {
+  min-height: 90vh;
+  width: 100%;
+  background-color: #161625;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-route-failure-button {
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  outline: none;
+  background-color: #2563eb;
+  color: #ffffff;
+  margin: 0px 0px 0px 0px;
+  padding: 13px 25px 13px 25px;
+  font-size: 18px;
+  font-weight: 500;
+}
