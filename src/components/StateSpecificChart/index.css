@@ -47,6 +47,27 @@
   }
 }
 
+.district-select-input {
+  background-color: #1e1e30;
+  width: 100%;
+  max-width: 300px;
+  padding: 15px 18px 15px 18px;
+  margin: 10px 0px 10px 0px;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  align-self: flex-start;
+}
+
+@media screen and (min-width: 768px) {
+  .district-select-input {
+    align-self: flex-end;
+  }
+}
+
 .bar-chart {
   margin: auto;
 }

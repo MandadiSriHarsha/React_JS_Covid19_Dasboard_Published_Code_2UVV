@@ -13,146 +13,218 @@ const statesList = [
   {
     state_code: 'AN',
     state_name: 'Andaman and Nicobar Islands',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694422926/Andaman_And_Nicobar_Islands_State_Map_ogykfz.svg',
   },
   {
     state_code: 'AP',
     state_name: 'Andhra Pradesh',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694424884/Andhra_Pradesh_State_Map_swih3k.svg',
   },
   {
     state_code: 'AR',
     state_name: 'Arunachal Pradesh',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421634/Arunachal_Pradesh_State_Map_e15a71.svg',
   },
   {
     state_code: 'AS',
     state_name: 'Assam',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421705/Assam_State_Map_mzvjuc.svg',
   },
   {
     state_code: 'BR',
     state_name: 'Bihar',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421132/Bihar_State_Map_k0bmv0.svg',
   },
   {
     state_code: 'CH',
     state_name: 'Chandigarh',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694422842/Chandigharh_State_Map_h6kdjk.svg',
   },
   {
     state_code: 'CT',
     state_name: 'Chhattisgarh',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694422199/Chattisgarh_State_Map_b4d781.svg',
   },
   {
     state_code: 'DN',
     state_name: 'Dadra and Nagar Haveli and Daman and Diu',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694423012/Dadra_and_Nagar_Haveli_and_Daman_and_Diu_State_Map_hgprjp.svg',
   },
   {
     state_code: 'DL',
     state_name: 'Delhi',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694423220/Delhi_State_Map_b7kdow.svg',
   },
   {
     state_code: 'GA',
     state_name: 'Goa',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421767/Goa_State_Map_qpxgfk.svg',
   },
   {
     state_code: 'GJ',
     state_name: 'Gujarat',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421281/Gujarat_State_Map_iyfgau.svg',
   },
   {
     state_code: 'HR',
     state_name: 'Haryana',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694420896/Harayana_State_Map_ormp2r.svg',
   },
   {
     state_code: 'HP',
     state_name: 'Himachal Pradesh',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694418911/Himachal_Pradesh_State_Map_ar0tvn.svg',
   },
   {
     state_code: 'JK',
     state_name: 'Jammu and Kashmir',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694418839/Jammu_and_Kashmir_State_Map_xy0wkb.svg',
   },
   {
     state_code: 'JH',
     state_name: 'Jharkhand',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421385/Jharkhand_State_Map_iqjp36.svg',
   },
   {
     state_code: 'KA',
     state_name: 'Karnataka',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694422533/Karnataka_State_Map_cuh9ey.svg',
   },
   {
     state_code: 'KL',
     state_name: 'Kerala',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694422604/Kerala_State_Map_rllz78.svg',
   },
   {
     state_code: 'LA',
     state_name: 'Ladakh',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694423281/Ladakh_State_Map_mkfzez.svg',
   },
   {
     state_code: 'LD',
     state_name: 'Lakshadweep',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694423077/Lakshadweep_Islands_State_Map_sn0hz8.svg',
   },
   {
     state_code: 'MH',
     state_name: 'Maharashtra',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694422358/Maharastra_State_Map_p18hel.svg',
   },
   {
     state_code: 'MP',
     state_name: 'Madhya Pradesh',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421206/Madhya_Pradesh_State_Map_fcukpp.svg',
   },
   {
     state_code: 'MN',
     state_name: 'Manipur',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421970/Manipur_State_Map_ehkwuu.svg',
   },
   {
     state_code: 'ML',
     state_name: 'Meghalaya',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421829/Meghalaya_State_Map_g2oeeq.svg',
   },
   {
     state_code: 'MZ',
     state_name: 'Mizoram',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694422032/Mizoram_State_Map_vrbwdg.svg',
   },
   {
     state_code: 'NL',
     state_name: 'Nagaland',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421889/Nagaland_State_Map_zwjgoe.svg',
   },
   {
     state_code: 'OR',
     state_name: 'Odisha',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694422287/Orissa_State_Map_kl7scf.svg',
   },
   {
     state_code: 'PY',
     state_name: 'Puducherry',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694423159/Puducherry_State_Map_eihsoq.svg',
   },
   {
     state_code: 'PB',
     state_name: 'Punjab',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694420734/Punjab_State_Map_qclioe.svg',
   },
   {
     state_code: 'RJ',
     state_name: 'Rajasthan',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694420969/Rajasthan_State_Map_mplogk.svg',
   },
   {
     state_code: 'SK',
     state_name: 'Sikkim',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421555/Sikkim_State_Map_ampnod.svg',
   },
   {
     state_code: 'TN',
     state_name: 'Tamil Nadu',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694422680/Tamil_Nadu_State_Map_x0fkbv.svg',
   },
   {
     state_code: 'TG',
     state_name: 'Telangana',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694422453/Telangana_State_Map_erfr52.svg',
   },
   {
     state_code: 'TR',
     state_name: 'Tripura',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694422124/Tripura_State_Map_ujdkom.svg',
   },
   {
     state_code: 'UP',
     state_name: 'Uttar Pradesh',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421051/Uttar_Pradesh_State_Map_xoy2qn.svg',
   },
   {
     state_code: 'UT',
     state_name: 'Uttarakhand',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694420812/Uttarakhand_State_Map_w18x64.svg',
   },
   {
     state_code: 'WB',
     state_name: 'West Bengal',
+    image_url:
+      'https://res.cloudinary.com/dqqgljlsw/image/upload/v1694421473/West_Bengal_State_Map_wqyx4f.svg',
   },
 ]
 
@@ -215,6 +287,8 @@ class StateSpecificRoute extends Component {
     totalDistrictWiseRecoveredCasesList: [],
     totalDistrictWiseDeceasedCasesList: [],
     stateName: '',
+    statePopulation: '',
+    stateImage: '',
     lastUpdatedDate: '',
     stateId: '',
   }
@@ -246,6 +320,12 @@ class StateSpecificRoute extends Component {
 
         const stateName = statesList.filter(
           eachitem => eachitem.state_code === retrievedStateId,
+        )
+
+        const totalPopulation = stateObj.meta.population
+
+        const stateDisplayImage = statesList.filter(
+          eachitem => eachitem.state_code === stateId,
         )
 
         const cumulativeTestedCasesCount = stateObj.total.tested
@@ -331,6 +411,8 @@ class StateSpecificRoute extends Component {
           totalDistrictWiseRecoveredCasesList: cumulativeDistrictWiseRecoveredCasesList,
           totalDistrictWiseDeceasedCasesList: cumulativeDistrictWiseDeceasedCasesList,
           stateName: stateName[0].state_name,
+          statePopulation: totalPopulation,
+          stateImage: stateDisplayImage[0].image_url,
           lastUpdatedDate: stateObj.meta.last_updated,
           stateId: retrievedStateId,
         })
@@ -369,6 +451,8 @@ class StateSpecificRoute extends Component {
       defaultSelectedCategory,
       lastUpdatedDate,
       stateName,
+      statePopulation,
+      stateImage,
       stateId,
     } = this.state
     let districtWiseStatsList
@@ -475,6 +559,24 @@ class StateSpecificRoute extends Component {
             stateCardId="stateSpecificDeceasedCasesContainer"
           />
         </ul>
+        <div className="ncp-report-bg-container">
+          <img src={stateImage} alt="state" className="state-image" />
+          <div className="report-stats-bg-container">
+            <h1 className="report-stats-heading">NCP Report</h1>
+            <div className="population-report-card">
+              <p className="population-report-card-heading">Population</p>
+              <h1 className="population-report-card-description">
+                {statePopulation}
+              </h1>
+            </div>
+            <div className="tested-report-card">
+              <p className="tested-report-card-heading">Tested</p>
+              <h1 className="tested-report-card-description">
+                {totalTestedCasesCount}
+              </h1>
+            </div>
+          </div>
+        </div>
         <div className="state-specific-route-success-component-district-wise-stats-bg-container">
           <h1
             className={`top-districts-heading ${districtWiseStatsListHeading}`}

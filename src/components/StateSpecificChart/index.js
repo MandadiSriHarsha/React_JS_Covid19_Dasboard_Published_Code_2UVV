@@ -36,6 +36,8 @@ class StateSpecificChart extends Component {
     recoveredCasesBarList: [],
     deceasedCasesBarList: [],
     testedCasesBarList: [],
+    districtsNamesList: [],
+    defaultSelectedDistrict: 'Select District',
   }
 
   componentDidMount() {
@@ -52,7 +54,10 @@ class StateSpecificChart extends Component {
     const response = await fetch(url)
     if (response.ok === true) {
       const data = await response.json()
+      console.log(data)
       const dateKeys = Object.keys(data[stateId].dates)
+      const districtNames = Object.keys(data[stateId].districts)
+      districtNames.push('Select District')
       const confirmedBarList = dateKeys.map(eachitem => ({
         date: new Date(eachitem),
         casesCount: data[stateId].dates[eachitem].total.confirmed,
@@ -118,6 +123,7 @@ class StateSpecificChart extends Component {
         recoveredCasesBarList: updatedRecoveredBarList,
         deceasedCasesBarList: updatedDeceasedBarList,
         testedCasesBarList: updatedTestedBarList,
+        districtsNamesList: districtNames,
       })
     } else {
       this.setState({
@@ -127,8 +133,13 @@ class StateSpecificChart extends Component {
         recoveredCasesBarList: [],
         deceasedCasesBarList: [],
         testedCasesBarList: [],
+        districtsNamesList: [],
       })
     }
+  }
+
+  onChangeDefaultSelectedDistrict = event => {
+    this.setState({defaultSelectedDistrict: event.target.value})
   }
 
   renderChartLoaderCard = () => (
@@ -144,6 +155,8 @@ class StateSpecificChart extends Component {
       recoveredCasesBarList,
       deceasedCasesBarList,
       testedCasesBarList,
+      districtsNamesList,
+      defaultSelectedDistrict,
     } = this.state
     const {defaultSelectedCategory} = this.props
 
@@ -190,7 +203,18 @@ class StateSpecificChart extends Component {
           </BarChart>
         </div>
         <div className="spread-trends-bg-container">
-          <h1 className="spread-trends-heading">Daily Spread Trends</h1>
+          <h1 className="spread-trends-heading">Spread Trends</h1>
+          <select
+            value={defaultSelectedDistrict}
+            onChange={this.onChangeDefaultSelectedDistrict}
+            className="district-select-input"
+          >
+            {districtsNamesList.map(eachitem => (
+              <option key={eachitem} value={eachitem}>
+                {eachitem}
+              </option>
+            ))}
+          </select>
           <div className="confirmed-line-chart-bg-container">
             <p className="confirmed-line-chart-heading line-chart-heading">
               Confirmed

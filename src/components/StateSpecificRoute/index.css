@@ -295,6 +295,147 @@
   color: #6c757d;
 }
 
+.ncp-report-bg-container {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: auto;
+  padding: 30px 20px 30px 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .ncp-report-bg-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 30px 0px 30px 0px;
+  }
+}
+
+.state-image {
+  width: 70%;
+  max-width: 350px;
+  background: transparent;
+  margin: 0px 0px 0px 0px;
+}
+
+.report-stats-bg-container {
+  width: 45%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 0px 0px 0px;
+  margin: 50px 0px 0px 0px;
+}
+
+.report-stats-heading {
+  width: 100%;
+  font-size: 18px;
+  color: #94a3b8;
+  font-weight: 400;
+  text-align: left;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0p 30px 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .report-stats-heading {
+    font-size: 23px;
+    text-align: center;
+  }
+}
+
+.population-report-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px 20px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.population-report-card-heading {
+  width: 100%;
+  text-align: left;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 8px 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .population-report-card-heading {
+    text-align: center;
+  }
+}
+
+.population-report-card-description {
+  width: 100%;
+  text-align: left;
+  color: #94a3b8;
+  font-weight: 500;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  font-size: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .population-report-card-description {
+    font-size: 25px;
+    text-align: center;
+  }
+}
+
+.tested-report-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px 20px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.tested-report-card-heading {
+  width: 100%;
+  text-align: left;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 8px 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .tested-report-card-heading {
+    text-align: center;
+  }
+}
+
+.tested-report-card-description {
+  width: 100%;
+  text-align: left;
+  color: #94a3b8;
+  font-weight: 500;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  font-size: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .tested-report-card-description {
+    font-size: 25px;
+    text-align: center;
+  }
+}
+
 .state-specific-district-wise-stats-list-bg-container {
   width: 100%;
   list-style-type: none;
