@@ -31,11 +31,11 @@ const CustomBar = props => {
 class StateSpecificChart extends Component {
   state = {
     pageStatus: 'INITIAL',
-    confirmedCasesBarList: [],
-    activeCasesBarList: [],
-    recoveredCasesBarList: [],
-    deceasedCasesBarList: [],
-    testedCasesBarList: [],
+    data: {},
+    cumulativeConfirmedCasesBarList: [],
+    cumulativeActiveCasesBarList: [],
+    cumulativeRecoveredCasesBarList: [],
+    cumulativeDeceasedCasesBarList: [],
     districtsNamesList: [],
     defaultSelectedDistrict: 'Select District',
   }
@@ -55,12 +55,20 @@ class StateSpecificChart extends Component {
     if (response.ok === true) {
       const data = await response.json()
       console.log(data)
-      const dateKeys = Object.keys(data[stateId].dates)
       const districtNames = Object.keys(data[stateId].districts)
       districtNames.push('Select District')
+      const dateKeys = Object.keys(data[stateId].dates)
       const confirmedBarList = dateKeys.map(eachitem => ({
         date: new Date(eachitem),
         casesCount: data[stateId].dates[eachitem].total.confirmed,
+      }))
+      const options = {day: '2-digit', month: 'short'}
+      const tempConfirmedBarList = confirmedBarList.sort(
+        (a, b) => a.date - b.date,
+      )
+      const updatedConfirmedBarList = tempConfirmedBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
       }))
       const activeBarList = dateKeys.map(eachitem => ({
         date: new Date(eachitem),
@@ -69,70 +77,46 @@ class StateSpecificChart extends Component {
           (data[stateId].dates[eachitem].total.recovered +
             data[stateId].dates[eachitem].total.deceased),
       }))
+      const tempActiveBarList = activeBarList.sort((a, b) => a.date - b.date)
+      const updatedActiveBarList = tempActiveBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
+      }))
       const recoveredBarList = dateKeys.map(eachitem => ({
         date: new Date(eachitem),
         casesCount: data[stateId].dates[eachitem].total.recovered,
+      }))
+      const tempRecoveredBarList = recoveredBarList.sort(
+        (a, b) => a.date - b.date,
+      )
+      const updatedRecoveredBarList = tempRecoveredBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
       }))
       const deceasedBarList = dateKeys.map(eachitem => ({
         date: new Date(eachitem),
         casesCount: data[stateId].dates[eachitem].total.deceased,
       }))
-      const testedBarList = dateKeys.map(eachitem => ({
-        date: new Date(eachitem),
-        casesCount: data[stateId].dates[eachitem].total.tested,
-      }))
-
-      const options = {day: '2-digit', month: 'short'}
-      const tempConfirmedBarList = confirmedBarList.sort(
-        (a, b) => a.date - b.date,
-      )
-      const tempActiveBarList = activeBarList.sort((a, b) => a.date - b.date)
-      const tempRecoveredBarList = recoveredBarList.sort(
-        (a, b) => a.date - b.date,
-      )
       const tempDeceasedBarList = deceasedBarList.sort(
         (a, b) => a.date - b.date,
       )
-      const tempTestedBarList = testedBarList.sort((a, b) => a.date - b.date)
-
-      const updatedConfirmedBarList = tempConfirmedBarList.map(eachitem => ({
-        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
-        casesCount: eachitem.casesCount,
-      }))
-      const updatedActiveBarList = tempActiveBarList.map(eachitem => ({
-        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
-        casesCount: eachitem.casesCount,
-      }))
-      const updatedRecoveredBarList = tempRecoveredBarList.map(eachitem => ({
-        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
-        casesCount: eachitem.casesCount,
-      }))
       const updatedDeceasedBarList = tempDeceasedBarList.map(eachitem => ({
         date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
         casesCount: eachitem.casesCount,
       }))
-      const updatedTestedBarList = tempTestedBarList.map(eachitem => ({
-        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
-        casesCount: eachitem.casesCount,
-      }))
-
       this.setState({
         pageStatus: 'SUCCESS',
-        confirmedCasesBarList: updatedConfirmedBarList,
-        activeCasesBarList: updatedActiveBarList,
-        recoveredCasesBarList: updatedRecoveredBarList,
-        deceasedCasesBarList: updatedDeceasedBarList,
-        testedCasesBarList: updatedTestedBarList,
+        data,
+        cumulativeConfirmedCasesBarList: updatedConfirmedBarList,
+        cumulativeActiveCasesBarList: updatedActiveBarList,
+        cumulativeRecoveredCasesBarList: updatedRecoveredBarList,
+        cumulativeDeceasedCasesBarList: updatedDeceasedBarList,
         districtsNamesList: districtNames,
       })
     } else {
       this.setState({
         pageStatus: 'FAILURE',
-        confirmedCasesBarList: [],
-        activeCasesBarList: [],
-        recoveredCasesBarList: [],
-        deceasedCasesBarList: [],
-        testedCasesBarList: [],
+        data: {},
         districtsNamesList: [],
       })
     }
@@ -140,6 +124,215 @@ class StateSpecificChart extends Component {
 
   onChangeDefaultSelectedDistrict = event => {
     this.setState({defaultSelectedDistrict: event.target.value})
+  }
+
+  getConfirmedCasesBarList = defaultSelectedDistrict => {
+    const {stateId} = this.props
+    const {data} = this.state
+    let returnData
+    if (defaultSelectedDistrict !== 'Select District') {
+      const dateKeys = Object.keys(
+        data[stateId].districts[defaultSelectedDistrict].dates,
+      )
+      const confirmedBarList = dateKeys.map(eachitem => ({
+        date: new Date(eachitem),
+        casesCount:
+          data[stateId].districts[defaultSelectedDistrict].dates[eachitem].total
+            .confirmed,
+      }))
+      const options = {day: '2-digit', month: 'short'}
+      const tempConfirmedBarList = confirmedBarList.sort(
+        (a, b) => a.date - b.date,
+      )
+      const updatedConfirmedBarList = tempConfirmedBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
+      }))
+      returnData = updatedConfirmedBarList
+    } else {
+      const dateKeys = Object.keys(data[stateId].dates)
+      const confirmedBarList = dateKeys.map(eachitem => ({
+        date: new Date(eachitem),
+        casesCount: data[stateId].dates[eachitem].total.confirmed,
+      }))
+      const options = {day: '2-digit', month: 'short'}
+      const tempConfirmedBarList = confirmedBarList.sort(
+        (a, b) => a.date - b.date,
+      )
+      const updatedConfirmedBarList = tempConfirmedBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
+      }))
+      returnData = updatedConfirmedBarList
+    }
+    return returnData
+  }
+
+  getActiveCasesBarList = defaultSelectedDistrict => {
+    const {stateId} = this.props
+    const {data} = this.state
+    let returnData
+    if (defaultSelectedDistrict !== 'Select District') {
+      const dateKeys = Object.keys(
+        data[stateId].districts[defaultSelectedDistrict].dates,
+      )
+      const activeBarList = dateKeys.map(eachitem => ({
+        date: new Date(eachitem),
+        casesCount:
+          data[stateId].districts[defaultSelectedDistrict].dates[eachitem].total
+            .confirmed -
+          (data[stateId].districts[defaultSelectedDistrict].dates[eachitem]
+            .total.recovered +
+            data[stateId].districts[defaultSelectedDistrict].dates[eachitem]
+              .total.deceased),
+      }))
+      const options = {day: '2-digit', month: 'short'}
+      const tempActiveBarList = activeBarList.sort((a, b) => a.date - b.date)
+      const updatedActiveBarList = tempActiveBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
+      }))
+      returnData = updatedActiveBarList
+    } else {
+      const dateKeys = Object.keys(data[stateId].dates)
+      const activeBarList = dateKeys.map(eachitem => ({
+        date: new Date(eachitem),
+        casesCount:
+          data[stateId].dates[eachitem].total.confirmed -
+          (data[stateId].dates[eachitem].total.recovered +
+            data[stateId].dates[eachitem].total.deceased),
+      }))
+      const options = {day: '2-digit', month: 'short'}
+      const tempActiveBarList = activeBarList.sort((a, b) => a.date - b.date)
+      const updatedActiveBarList = tempActiveBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
+      }))
+      returnData = updatedActiveBarList
+    }
+    return returnData
+  }
+
+  getRecoveredCasesBarList = defaultSelectedDistrict => {
+    const {stateId} = this.props
+    const {data} = this.state
+    let returnData
+    if (defaultSelectedDistrict !== 'Select District') {
+      const dateKeys = Object.keys(
+        data[stateId].districts[defaultSelectedDistrict].dates,
+      )
+      const recoveredBarList = dateKeys.map(eachitem => ({
+        date: new Date(eachitem),
+        casesCount:
+          data[stateId].districts[defaultSelectedDistrict].dates[eachitem].total
+            .recovered,
+      }))
+      const options = {day: '2-digit', month: 'short'}
+      const tempRecoveredBarList = recoveredBarList.sort(
+        (a, b) => a.date - b.date,
+      )
+      const updatedRecoveredBarList = tempRecoveredBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
+      }))
+      returnData = updatedRecoveredBarList
+    } else {
+      const dateKeys = Object.keys(data[stateId].dates)
+      const recoveredBarList = dateKeys.map(eachitem => ({
+        date: new Date(eachitem),
+        casesCount: data[stateId].dates[eachitem].total.recovered,
+      }))
+      const options = {day: '2-digit', month: 'short'}
+      const tempRecoveredBarList = recoveredBarList.sort(
+        (a, b) => a.date - b.date,
+      )
+      const updatedRecoveredBarList = tempRecoveredBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
+      }))
+      returnData = updatedRecoveredBarList
+    }
+    return returnData
+  }
+
+  getDeceasedCasesBarList = defaultSelectedDistrict => {
+    const {stateId} = this.props
+    const {data} = this.state
+    let returnData
+    if (defaultSelectedDistrict !== 'Select District') {
+      const dateKeys = Object.keys(
+        data[stateId].districts[defaultSelectedDistrict].dates,
+      )
+      const deceasedBarList = dateKeys.map(eachitem => ({
+        date: new Date(eachitem),
+        casesCount:
+          data[stateId].districts[defaultSelectedDistrict].dates[eachitem].total
+            .deceased,
+      }))
+      const options = {day: '2-digit', month: 'short'}
+      const tempDeceasedBarList = deceasedBarList.sort(
+        (a, b) => a.date - b.date,
+      )
+      const updatedDeceasedBarList = tempDeceasedBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
+      }))
+      returnData = updatedDeceasedBarList
+    } else {
+      const dateKeys = Object.keys(data[stateId].dates)
+      const deceasedBarList = dateKeys.map(eachitem => ({
+        date: new Date(eachitem),
+        casesCount: data[stateId].dates[eachitem].total.deceased,
+      }))
+      const options = {day: '2-digit', month: 'short'}
+      const tempDeceasedBarList = deceasedBarList.sort(
+        (a, b) => a.date - b.date,
+      )
+      const updatedDeceasedBarList = tempDeceasedBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
+      }))
+      returnData = updatedDeceasedBarList
+    }
+    return returnData
+  }
+
+  getTestedCasesBarList = defaultSelectedDistrict => {
+    const {stateId} = this.props
+    const {data} = this.state
+    let returnData
+    if (defaultSelectedDistrict !== 'Select District') {
+      const dateKeys = Object.keys(
+        data[stateId].districts[defaultSelectedDistrict].dates,
+      )
+      const testedBarList = dateKeys.map(eachitem => ({
+        date: new Date(eachitem),
+        casesCount:
+          data[stateId].districts[defaultSelectedDistrict].dates[eachitem].total
+            .tested,
+      }))
+      const options = {day: '2-digit', month: 'short'}
+      const tempTestedBarList = testedBarList.sort((a, b) => a.date - b.date)
+      const updatedTestedBarList = tempTestedBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
+      }))
+      returnData = updatedTestedBarList
+    } else {
+      const dateKeys = Object.keys(data[stateId].dates)
+      const testedBarList = dateKeys.map(eachitem => ({
+        date: new Date(eachitem),
+        casesCount: data[stateId].dates[eachitem].total.tested,
+      }))
+      const options = {day: '2-digit', month: 'short'}
+      const tempTestedBarList = testedBarList.sort((a, b) => a.date - b.date)
+      const updatedTestedBarList = tempTestedBarList.map(eachitem => ({
+        date: new Intl.DateTimeFormat('en-US', options).format(eachitem.date),
+        casesCount: eachitem.casesCount,
+      }))
+      returnData = updatedTestedBarList
+    }
+    return returnData
   }
 
   renderChartLoaderCard = () => (
@@ -150,29 +343,44 @@ class StateSpecificChart extends Component {
 
   renderChartSuccessCard = () => {
     const {
-      confirmedCasesBarList,
-      activeCasesBarList,
-      recoveredCasesBarList,
-      deceasedCasesBarList,
-      testedCasesBarList,
       districtsNamesList,
       defaultSelectedDistrict,
+      cumulativeConfirmedCasesBarList,
+      cumulativeActiveCasesBarList,
+      cumulativeRecoveredCasesBarList,
+      cumulativeDeceasedCasesBarList,
     } = this.state
     const {defaultSelectedCategory} = this.props
+
+    const confirmedCasesBarList = this.getConfirmedCasesBarList(
+      defaultSelectedDistrict,
+    )
+    const activeCasesBarList = this.getActiveCasesBarList(
+      defaultSelectedDistrict,
+    )
+    const recoveredCasesBarList = this.getRecoveredCasesBarList(
+      defaultSelectedDistrict,
+    )
+    const deceasedCasesBarList = this.getDeceasedCasesBarList(
+      defaultSelectedDistrict,
+    )
+    const testedCasesBarList = this.getTestedCasesBarList(
+      defaultSelectedDistrict,
+    )
 
     let dataValue
     let fillValue
     if (defaultSelectedCategory === 'Confirmed') {
-      dataValue = confirmedCasesBarList.slice(0, 10)
+      dataValue = cumulativeConfirmedCasesBarList.slice(0, 10)
       fillValue = '#9A0E31'
     } else if (defaultSelectedCategory === 'Active') {
-      dataValue = activeCasesBarList.slice(0, 10)
+      dataValue = cumulativeActiveCasesBarList.slice(0, 10)
       fillValue = '#0A4FA0'
     } else if (defaultSelectedCategory === 'Recovered') {
-      dataValue = recoveredCasesBarList.slice(0, 10)
+      dataValue = cumulativeRecoveredCasesBarList.slice(0, 10)
       fillValue = '#216837'
     } else {
-      dataValue = deceasedCasesBarList.slice(0, 10)
+      dataValue = cumulativeDeceasedCasesBarList.slice(0, 10)
       fillValue = '#474C57'
     }
 
