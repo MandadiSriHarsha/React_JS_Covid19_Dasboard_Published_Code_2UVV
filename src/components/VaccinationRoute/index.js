@@ -6,7 +6,6 @@ import {
   YAxis,
   Tooltip,
   Area,
-  CartesianGrid,
   PieChart,
   Pie,
   Legend,
@@ -153,10 +152,10 @@ class VaccinationRoute extends Component {
   renderByDosesChart = () => {
     const {vaccinationByDosesList} = this.state
     return (
-      <div className="by-doses-chart-bg-container">
+      <div className="by-doses-and-age-chart-bg-container">
         <AreaChart
-          width={730}
-          height={250}
+          width={1000}
+          height={300}
           data={vaccinationByDosesList}
           margin={{top: 10, right: 30, left: 0, bottom: 0}}
         >
@@ -192,10 +191,10 @@ class VaccinationRoute extends Component {
   renderByAgeChart = () => {
     const {vaccinationByAgeListOne} = this.state
     return (
-      <div className="by-doses-chart-bg-container">
+      <div className="by-doses-and-age-chart-bg-container">
         <AreaChart
-          width={730}
-          height={250}
+          width={1000}
+          height={300}
           data={vaccinationByAgeListOne}
           margin={{top: 10, right: 30, left: 0, bottom: 0}}
         >
