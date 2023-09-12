@@ -315,6 +315,7 @@ class StateSpecificRoute extends Component {
       const response = await fetch(url)
       if (response.ok === true) {
         const data = await response.json()
+        console.log(data)
 
         const stateObj = data[retrievedStateId]
 

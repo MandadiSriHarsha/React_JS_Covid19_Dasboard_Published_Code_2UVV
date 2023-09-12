@@ -1,0 +1,296 @@
+.vaccination-route-loader-bg-container {
+  min-height: 90vh;
+  width: 100%;
+  background-color: #161625;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.vaccination-route-failure-bg-container {
+  min-height: 90vh;
+  width: 100%;
+  background-color: #161625;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.vaccination-route-failure-button {
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  outline: none;
+  background-color: #2563eb;
+  color: #ffffff;
+  margin: 0px 0px 0px 0px;
+  padding: 13px 25px 13px 25px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .vaccination-route-failure-button {
+    font-size: 20px;
+  }
+}
+
+.vaccination-route-success-bg-container {
+  min-height: 90vh;
+  width: 100%;
+  background-color: #161625;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vaccination-route-header-card {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0px 30px 0px;
+  padding: 0px 15px 0px 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .vaccination-route-header-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.header-card-details-card {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 12px 12px 12px 12px;
+  padding: 20px 25px 20px 25px;
+  background-color: #2f2f43;
+  border-radius: 7px;
+}
+
+@media screen and (min-width: 768px) {
+  .header-card-details-card {
+    width: 45%;
+  }
+}
+
+.details-card-image {
+  height: 40px;
+  width: 40px;
+  margin: 0px 25px 0px 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .details-card-image {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.details-card-stats-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  width: 70%;
+}
+
+.stats-card-heading-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+}
+
+.stats-card-heading-card-heading {
+  width: 100%;
+  word-wrap: break-word;
+  margin: 0px 0px 8px 0px;
+  padding: 0px 0px 0px 0px;
+  font-size: 16px;
+  color: #cbd5e1;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  .stats-card-heading-card-heading {
+    font-size: 18px;
+  }
+}
+
+.stats-card-heading-card-description {
+  width: 100%;
+  word-wrap: break-word;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .stats-card-heading-card-description {
+    font-size: 18px;
+  }
+}
+
+.stats-card-description-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+@media screen and (min-width: 900px) {
+  .stats-card-description-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}
+
+.stats-card-description-card-sub-card-one {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 20px 0px 0px;
+}
+
+@media screen and (min-width: 900px) {
+  .stats-card-description-card-sub-card-one {
+    width: 50%;
+  }
+}
+
+.stats-card-description-card-sub-card-one-heading {
+  width: 100%;
+  word-wrap: break-word;
+  margin: 0px 0px 8px 0px;
+  padding: 0px 0px 0px 0px;
+  font-size: 16px;
+  color: #cbd5e1;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  .stats-card-description-card-sub-card-one-heading {
+    font-size: 18px;
+  }
+}
+
+.stats-card-description-card-sub-card-one-description {
+  width: 100%;
+  word-wrap: break-word;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .stats-card-description-card-sub-card-one-description {
+    font-size: 18px;
+  }
+}
+
+.stats-card-description-card-sub-card-two {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0px 0px 0px;
+  margin: 20px 0px 0px 0px;
+}
+
+@media screen and (min-width: 900px) {
+  .stats-card-description-card-sub-card-two {
+    width: 50%;
+    margin: 0px 0px 0px 20px;
+  }
+}
+
+.stats-card-description-card-sub-card-two-heading {
+  width: 100%;
+  word-wrap: break-word;
+  margin: 0px 0px 8px 0px;
+  padding: 0px 0px 0px 0px;
+  font-size: 16px;
+  color: #cbd5e1;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  .stats-card-description-card-sub-card-two-heading {
+    font-size: 18px;
+  }
+}
+
+.stats-card-description-card-sub-card-two-description {
+  width: 100%;
+  word-wrap: break-word;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .stats-card-description-card-sub-card-two-description {
+    font-size: 18px;
+  }
+}
+
+.vaccination-route-bar-charts-bg-container {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .vaccination-route-bar-charts-bg-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.vaccination-by-category-bg-container {
+  width: 90%;
+  max-width: 500px;
+  padding: 30px 20px 30px 20px;
+  background-color: #1c1c2b;
+  border-radius: 7px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vaccination-by-category-container-heading {
+  width: 100%;
+  font-size: 18px;
+  margin: 0px 0px 20px 0px;
+  padding: 0px 0px 0px 0px;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  .vaccination-by-category-container-heading {
+    font-size: 22px;
+  }
+}

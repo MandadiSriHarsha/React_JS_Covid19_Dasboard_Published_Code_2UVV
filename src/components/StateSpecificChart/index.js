@@ -389,7 +389,7 @@ class StateSpecificChart extends Component {
         <div className="bar-chart-bg-container">
           <BarChart
             width={900}
-            height={450}
+            height={480}
             data={dataValue.slice(0, 11)}
             className="bar-chart"
           >
