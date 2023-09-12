@@ -54,7 +54,6 @@ class StateSpecificChart extends Component {
     const response = await fetch(url)
     if (response.ok === true) {
       const data = await response.json()
-      console.log(data)
       const districtNames = Object.keys(data[stateId].districts)
       districtNames.push('Select District')
       const dateKeys = Object.keys(data[stateId].dates)

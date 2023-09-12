@@ -1,6 +1,18 @@
 import {Component} from 'react'
 
-import {PieChart, Pie, Legend, Cell, ResponsiveContainer} from 'recharts'
+import {
+  AreaChart,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Area,
+  CartesianGrid,
+  PieChart,
+  Pie,
+  Legend,
+  Cell,
+  ResponsiveContainer,
+} from 'recharts'
 
 import Loader from 'react-loader-spinner'
 
@@ -21,9 +33,12 @@ class VaccinationRoute extends Component {
   state = {
     pageStatus: 'INITIAL',
     headerData: {},
+    vaccinationByDosesList: [],
+    defaultTrendsOption: 'By Doses',
     vaccinationByGenderList: [],
     vaccinationByCompanyList: [],
-    vaccinationByAgeList: [],
+    vaccinationByAgeListOne: [],
+    vaccinationByAgeListTwo: [],
   }
 
   componentDidMount() {
@@ -34,11 +49,18 @@ class VaccinationRoute extends Component {
     this.setState({pageStatus: 'LOADING'}, this.fetchVaccinationRouteData)
   }
 
+  changeDefaultOptionToDoses = () => {
+    this.setState({defaultTrendsOption: 'By Doses'})
+  }
+
+  changeDefaultOptionToAge = () => {
+    this.setState({defaultTrendsOption: 'By Age'})
+  }
+
   fetchVaccinationRouteData = async () => {
     const url = 'https://apis.ccbp.in/covid19-vaccination-data'
     const response = await fetch(url)
     const data = await response.json()
-    console.log(data)
     if (response.ok === true) {
       const headerData = {
         total_no_of_sites_conducting_vaccination: data.topBlock.sites.total,
@@ -52,15 +74,25 @@ class VaccinationRoute extends Component {
         total_no_of_dose_two_vaccinations_done:
           data.topBlock.vaccination.tot_dose_2,
       }
-      const vaccinationByAgeList = [
-        {
-          key: '12-14',
-          value: data.vaccinationByAge.vac_12_14,
-        },
-        {
-          key: '15-17',
-          value: data.vaccinationByAge.vac_15_17,
-        },
+      const vaccinationByDosesList = data.vaccinationDoneByTime.map(
+        eachitem => ({
+          doseOne: eachitem.dose_one,
+          doseTwo: eachitem.dose_two,
+          totalDoses: eachitem.count,
+          timeStamp: eachitem.label,
+        }),
+      )
+      const vaccinationByAgeListOne = data.vaccinationDoneByTimeAgeWise.map(
+        eachitem => ({
+          timeStamp: eachitem.label,
+          '12-14': eachitem.vac_12_14,
+          '15-17': eachitem.vac_15_17,
+          '18-45': eachitem.vac_18_45,
+          '45-60': eachitem.vac_18_45,
+          'Above 60': eachitem.vac_60_above,
+        }),
+      )
+      const vaccinationByAgeListTwo = [
         {
           key: '18-45',
           value: data.vaccinationByAge.vac_18_45,
@@ -105,7 +137,9 @@ class VaccinationRoute extends Component {
       this.setState({
         pageStatus: 'SUCCESS',
         headerData,
-        vaccinationByAgeList,
+        vaccinationByDosesList,
+        vaccinationByAgeListOne,
+        vaccinationByAgeListTwo,
         vaccinationByCompanyList,
         vaccinationByGenderList,
       })
@@ -114,6 +148,98 @@ class VaccinationRoute extends Component {
         pageStatus: 'FAILURE',
       })
     }
+  }
+
+  renderByDosesChart = () => {
+    const {vaccinationByDosesList} = this.state
+    return (
+      <div className="by-doses-chart-bg-container">
+        <AreaChart
+          width={730}
+          height={250}
+          data={vaccinationByDosesList}
+          margin={{top: 10, right: 30, left: 0, bottom: 0}}
+        >
+          <XAxis dataKey="timeStamp" />
+          <YAxis />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey="doseOne"
+            stroke="#37C62B"
+            fillOpacity={1}
+            fill="url(#colorUv)"
+          />
+          <Area
+            type="monotone"
+            dataKey="doseTwo"
+            stroke="#FCEA4E"
+            fillOpacity={1}
+            fill="url(#colorPv)"
+          />
+          <Area
+            type="monotone"
+            dataKey="totalDoses"
+            stroke="#A226DC"
+            fillOpacity={1}
+            fill="url(#colorPv)"
+          />
+        </AreaChart>
+      </div>
+    )
+  }
+
+  renderByAgeChart = () => {
+    const {vaccinationByAgeListOne} = this.state
+    return (
+      <div className="by-doses-chart-bg-container">
+        <AreaChart
+          width={730}
+          height={250}
+          data={vaccinationByAgeListOne}
+          margin={{top: 10, right: 30, left: 0, bottom: 0}}
+        >
+          <XAxis dataKey="timeStamp" />
+          <YAxis />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey="12-14"
+            stroke="#F54394"
+            fillOpacity={1}
+            fill="url(#colorUv)"
+          />
+          <Area
+            type="monotone"
+            dataKey="15-17"
+            stroke="#7AC142"
+            fillOpacity={1}
+            fill="url(#colorPv)"
+          />
+          <Area
+            type="monotone"
+            dataKey="18-45"
+            stroke="#FF9800"
+            fillOpacity={1}
+            fill="url(#colorPv)"
+          />
+          <Area
+            type="monotone"
+            dataKey="45-60"
+            stroke="#64C2A6"
+            fillOpacity={1}
+            fill="url(#colorPv)"
+          />
+          <Area
+            type="monotone"
+            dataKey="Above 60"
+            stroke="#fa564d"
+            fillOpacity={1}
+            fill="url(#colorPv)"
+          />
+        </AreaChart>
+      </div>
+    )
   }
 
   renderVaccinationRouteLoadingComponent = () => (
@@ -125,12 +251,20 @@ class VaccinationRoute extends Component {
   renderVaccinationRouteSuccessComponent = () => {
     const {
       headerData,
-      vaccinationByAgeList,
+      defaultTrendsOption,
+      vaccinationByAgeListTwo,
       vaccinationByCompanyList,
       vaccinationByGenderList,
     } = this.state
+    const applyByDosesButtonStyle =
+      defaultTrendsOption === 'By Doses' ? 'apply-by-doses-style' : null
+    const applyByAgeButtonStyle =
+      defaultTrendsOption === 'By Age' ? 'apply-by-age-style' : null
     return (
       <div className="vaccination-route-success-bg-container">
+        <h1 className="vaccination-route-main-heading">
+          <AiFillHome className="home-icon" /> India
+        </h1>
         <div className="vaccination-route-header-card">
           <div className="header-card-details-card">
             <img
@@ -207,61 +341,123 @@ class VaccinationRoute extends Component {
             </div>
           </div>
         </div>
+        <div className="vaccination-by-doses-age-bg-container">
+          <h1 className="vaccination-by-doses-age-main-heading">
+            Vaccination Trends
+          </h1>
+          <div className="options-button-container">
+            <button
+              type="button"
+              className={`by-doses-button ${applyByDosesButtonStyle}`}
+              onClick={this.changeDefaultOptionToDoses}
+            >
+              By Doses
+            </button>
+            <button
+              type="button"
+              className={`by-age-button ${applyByAgeButtonStyle}`}
+              onClick={this.changeDefaultOptionToAge}
+            >
+              By Age
+            </button>
+          </div>
+          {defaultTrendsOption === 'By Doses'
+            ? this.renderByDosesChart()
+            : this.renderByAgeChart()}
+        </div>
         <div className="vaccination-route-bar-charts-bg-container">
           <div className="vaccination-by-category-bg-container">
             <h1 className="vaccination-by-category-container-heading">
               Vaccination By Category
             </h1>
-            <ResponsiveContainer width="100%" height={350}>
-              <PieChart>
-                <Pie
-                  cx="50%"
-                  cy="40%"
-                  data={vaccinationByGenderList}
-                  startAngle={180}
-                  endAngle={0}
-                  innerRadius="60%"
-                  outerRadius="90%"
-                  dataKey="value"
-                >
-                  <Cell name="Male" fill="#F54394" />
-                  <Cell name="Female" fill="#5A8DEE" />
-                  <Cell name="Others" fill="#FF9800" />
-                </Pie>
-                <Legend
-                  iconType="circle"
-                  iconSize="8px"
-                  layout="horizontal"
-                  verticalAlign="middle"
-                  align="center"
-                />
-              </PieChart>
-            </ResponsiveContainer>
-            <ResponsiveContainer width="100%" height={350}>
-              <PieChart>
-                <Pie
-                  cx="50%"
-                  cy="40%"
-                  data={vaccinationByCompanyList}
-                  startAngle={180}
-                  endAngle={0}
-                  innerRadius="60%"
-                  outerRadius="90%"
-                  dataKey="value"
-                >
-                  <Cell name="Covishield" fill="#5A8DEE" />
-                  <Cell name="Covaxin" fill="#7AC142" />
-                  <Cell name="Sputnik V" fill="#FF9800" />
-                </Pie>
-                <Legend
-                  iconType="circle"
-                  iconSize="8px"
-                  layout="horizontal"
-                  verticalAlign="middle"
-                  align="center"
-                />
-              </PieChart>
-            </ResponsiveContainer>
+            <div className="temp-bar-container-one">
+              <ResponsiveContainer height="100%" width="100%">
+                <PieChart>
+                  <Pie
+                    cx="50%"
+                    cy="40%"
+                    data={vaccinationByGenderList}
+                    startAngle={180}
+                    endAngle={0}
+                    innerRadius="60%"
+                    outerRadius="80%"
+                    dataKey="value"
+                  >
+                    <Cell name="Male" fill="#F54394" />
+                    <Cell name="Female" fill="#5A8DEE" />
+                    <Cell name="Others" fill="#FF9800" />
+                  </Pie>
+                  <Legend
+                    iconType="circle"
+                    iconSize="12px"
+                    layout="horizontal"
+                    verticalAlign="middle"
+                    align="center"
+                    fontSize="12px"
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="temp-bar-container-one">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    cx="50%"
+                    cy="40%"
+                    data={vaccinationByCompanyList}
+                    startAngle={180}
+                    endAngle={0}
+                    innerRadius="60%"
+                    outerRadius="80%"
+                    dataKey="value"
+                  >
+                    <Cell name="Covishield" fill="#5A8DEE" />
+                    <Cell name="Covaxin" fill="#7AC142" />
+                    <Cell name="Sputnik V" fill="#FF9800" />
+                  </Pie>
+                  <Legend
+                    iconType="circle"
+                    iconSize="12px"
+                    layout="horizontal"
+                    verticalAlign="middle"
+                    align="center"
+                    fontSize="12px"
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+          <div className="vaccination-by-age-bg-container">
+            <h1 className="vaccination-by-age-container-heading">
+              Vaccination By Age
+            </h1>
+            <div className="temp-bar-container-two">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    cx="50%"
+                    cy="50%"
+                    data={vaccinationByAgeListTwo}
+                    startAngle={360}
+                    endAngle={0}
+                    outerRadius="95%"
+                    dataKey="value"
+                  >
+                    <Cell name="18-45" fill="#A3DF9F" />
+                    <Cell name="45-60" fill="#64C2A6" />
+                    <Cell name="Above 60" fill="#2D87BB" />
+                  </Pie>
+                  <Legend
+                    iconType="circle"
+                    iconSize="12px"
+                    layout="horizontal"
+                    verticalAlign="bottom"
+                    align="center"
+                    fontSize="12px"
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </div>
         <Footer />
