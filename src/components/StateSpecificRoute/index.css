@@ -198,13 +198,13 @@
 .state-specific-overall-stats-card-button-description {
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  font-size: 23px;
+  font-size: 20px;
   text-align: center;
 }
 
 @media screen and (min-width: 768px) {
   .state-specific-overall-stats-card-button-description {
-    font-size: 25px;
+    font-size: 23px;
   }
 }
 
@@ -242,18 +242,22 @@
 
 .apply-confirmed-bg-color {
   background-color: #331427;
+  border: 2px solid #ff073a;
 }
 
 .apply-active-bg-color {
   background-color: #132240;
+  border: 2px solid #007bff;
 }
 
 .apply-recovered-bg-color {
   background-color: #182829;
+  border: 2px solid #28a745;
 }
 
 .apply-deceased-bg-color {
   background-color: #212230;
+  border: 2px solid #6c757d;
 }
 
 .state-specific-route-success-component-district-wise-stats-bg-container {

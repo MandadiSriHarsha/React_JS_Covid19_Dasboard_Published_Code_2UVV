@@ -84,11 +84,11 @@ class VaccinationRoute extends Component {
       const vaccinationByAgeListOne = data.vaccinationDoneByTimeAgeWise.map(
         eachitem => ({
           timeStamp: eachitem.label,
-          '12-14': eachitem.vac_12_14,
-          '15-17': eachitem.vac_15_17,
-          '18-45': eachitem.vac_18_45,
-          '45-60': eachitem.vac_18_45,
-          'Above 60': eachitem.vac_60_above,
+          'Age 12-14': eachitem.vac_12_14,
+          'Age 15-17': eachitem.vac_15_17,
+          'Age 18-45': eachitem.vac_18_45,
+          'Age 45-60': eachitem.vac_18_45,
+          'Above Age 60': eachitem.vac_60_above,
         }),
       )
       const vaccinationByAgeListTwo = [
@@ -203,35 +203,35 @@ class VaccinationRoute extends Component {
           <Tooltip />
           <Area
             type="monotone"
-            dataKey="12-14"
+            dataKey="Age 12-14"
             stroke="#F54394"
             fillOpacity={1}
             fill="url(#colorUv)"
           />
           <Area
             type="monotone"
-            dataKey="15-17"
+            dataKey="Age 15-17"
             stroke="#7AC142"
             fillOpacity={1}
             fill="url(#colorPv)"
           />
           <Area
             type="monotone"
-            dataKey="18-45"
+            dataKey="Age18-45"
             stroke="#FF9800"
             fillOpacity={1}
             fill="url(#colorPv)"
           />
           <Area
             type="monotone"
-            dataKey="45-60"
+            dataKey="Age 45-60"
             stroke="#64C2A6"
             fillOpacity={1}
             fill="url(#colorPv)"
           />
           <Area
             type="monotone"
-            dataKey="Above 60"
+            dataKey="Above Age 60"
             stroke="#fa564d"
             fillOpacity={1}
             fill="url(#colorPv)"
@@ -340,11 +340,11 @@ class VaccinationRoute extends Component {
             </div>
           </div>
         </div>
-        <div className="vaccination-by-doses-age-bg-container">
-          <h1 className="vaccination-by-doses-age-main-heading">
+        <div className="vaccination-by-doses-and-age-bg-container">
+          <h1 className="vaccination-by-doses-and-age-main-heading">
             Vaccination Trends
           </h1>
-          <div className="options-button-container">
+          <div className="by-doses-and-age-options-button-container">
             <button
               type="button"
               className={`by-doses-button ${applyByDosesButtonStyle}`}
