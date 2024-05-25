@@ -117,6 +117,10 @@
   outline: none;
 }
 
+.desktop-navbar-menu-card-item:hover {
+  color: #ffffff;
+}
+
 .apply-desktop-navbar-menu-card-home-item-style {
   color: #ffffff;
   border-bottom: 2px solid #ffffff;

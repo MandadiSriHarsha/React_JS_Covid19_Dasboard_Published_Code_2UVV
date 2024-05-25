@@ -159,6 +159,20 @@ class VaccinationRoute extends Component {
           data={vaccinationByDosesList}
           margin={{top: 10, right: 30, left: 0, bottom: 0}}
         >
+          <defs>
+            <linearGradient id="colorDoseOne" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#37C62B" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#37C62B" stopOpacity={0} />
+            </linearGradient>
+            <linearGradient id="colorDoseTwo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#FCEA4E" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#FCEA4E" stopOpacity={0} />
+            </linearGradient>
+            <linearGradient id="colorTotalDoses" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#A226DC" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#A226DC" stopOpacity={0} />
+            </linearGradient>
+          </defs>
           <XAxis dataKey="timeStamp" />
           <YAxis />
           <Tooltip />
@@ -167,21 +181,21 @@ class VaccinationRoute extends Component {
             dataKey="doseOne"
             stroke="#37C62B"
             fillOpacity={1}
-            fill="url(#colorUv)"
+            fill="url(#colorDoseOne)"
           />
           <Area
             type="monotone"
             dataKey="doseTwo"
             stroke="#FCEA4E"
             fillOpacity={1}
-            fill="url(#colorPv)"
+            fill="url(#colorDoseTwo)"
           />
           <Area
             type="monotone"
             dataKey="totalDoses"
             stroke="#A226DC"
             fillOpacity={1}
-            fill="url(#colorPv)"
+            fill="url(#colorTotalDoses)"
           />
         </AreaChart>
       </div>
@@ -198,6 +212,28 @@ class VaccinationRoute extends Component {
           data={vaccinationByAgeListOne}
           margin={{top: 10, right: 30, left: 0, bottom: 0}}
         >
+          <defs>
+            <linearGradient id="colorAge12-14" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#F54394" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#F54394" stopOpacity={0} />
+            </linearGradient>
+            <linearGradient id="colorAge15-17" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#7AC142" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#7AC142" stopOpacity={0} />
+            </linearGradient>
+            <linearGradient id="colorAge18-45" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#FF9800" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#FF9800" stopOpacity={0} />
+            </linearGradient>
+            <linearGradient id="colorAge45-60" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#64C2A6" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#64C2A6" stopOpacity={0} />
+            </linearGradient>
+            <linearGradient id="colorAgeAbove60" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#FA564D" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#FA564D" stopOpacity={0} />
+            </linearGradient>
+          </defs>
           <XAxis dataKey="timeStamp" />
           <YAxis />
           <Tooltip />
@@ -206,35 +242,35 @@ class VaccinationRoute extends Component {
             dataKey="Age 12-14"
             stroke="#F54394"
             fillOpacity={1}
-            fill="url(#colorUv)"
+            fill="url(#colorAge12-14)"
           />
           <Area
             type="monotone"
             dataKey="Age 15-17"
             stroke="#7AC142"
             fillOpacity={1}
-            fill="url(#colorPv)"
+            fill="url(#colorAge15-17)"
           />
           <Area
             type="monotone"
             dataKey="Age18-45"
             stroke="#FF9800"
             fillOpacity={1}
-            fill="url(#colorPv)"
+            fill="url(#colorAge18-45)"
           />
           <Area
             type="monotone"
             dataKey="Age 45-60"
             stroke="#64C2A6"
             fillOpacity={1}
-            fill="url(#colorPv)"
+            fill="url(#colorAge45-60)"
           />
           <Area
             type="monotone"
             dataKey="Above Age 60"
-            stroke="#fa564d"
+            stroke="#FA564D"
             fillOpacity={1}
-            fill="url(#colorPv)"
+            fill="url(#colorAgeAbove60)"
           />
         </AreaChart>
       </div>

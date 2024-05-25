@@ -274,12 +274,6 @@ class HomeRoute extends Component {
     this.setState({searchText: event.target.value})
   }
 
-  renderHomeRouteLoadingComponent = () => (
-    <div className="home-route-loading-bg-container" id="homeRouteLoader">
-      <Loader type="TailSpin" color="#00BBFF" height={60} width={60} />
-    </div>
-  )
-
   renderHomeRouteSuccessComponentInputCard = () => {
     const {searchText} = this.state
     return (

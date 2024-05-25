@@ -37,7 +37,7 @@ class StateSpecificChart extends Component {
     cumulativeRecoveredCasesBarList: [],
     cumulativeDeceasedCasesBarList: [],
     districtsNamesList: [],
-    defaultSelectedDistrict: 'Select District',
+    defaultSelectedDistrict: 'All Districts',
   }
 
   componentDidMount() {
@@ -55,7 +55,7 @@ class StateSpecificChart extends Component {
     if (response.ok === true) {
       const data = await response.json()
       const districtNames = Object.keys(data[stateId].districts)
-      districtNames.push('Select District')
+      districtNames.push('All Districts')
       const dateKeys = Object.keys(data[stateId].dates)
       const confirmedBarList = dateKeys.map(eachitem => ({
         date: new Date(eachitem),
@@ -129,7 +129,7 @@ class StateSpecificChart extends Component {
     const {stateId} = this.props
     const {data} = this.state
     let returnData
-    if (defaultSelectedDistrict !== 'Select District') {
+    if (defaultSelectedDistrict !== 'All Districts') {
       const dateKeys = Object.keys(
         data[stateId].districts[defaultSelectedDistrict].dates,
       )
@@ -171,7 +171,7 @@ class StateSpecificChart extends Component {
     const {stateId} = this.props
     const {data} = this.state
     let returnData
-    if (defaultSelectedDistrict !== 'Select District') {
+    if (defaultSelectedDistrict !== 'All Districts') {
       const dateKeys = Object.keys(
         data[stateId].districts[defaultSelectedDistrict].dates,
       )
@@ -216,7 +216,7 @@ class StateSpecificChart extends Component {
     const {stateId} = this.props
     const {data} = this.state
     let returnData
-    if (defaultSelectedDistrict !== 'Select District') {
+    if (defaultSelectedDistrict !== 'All Districts') {
       const dateKeys = Object.keys(
         data[stateId].districts[defaultSelectedDistrict].dates,
       )
@@ -258,7 +258,7 @@ class StateSpecificChart extends Component {
     const {stateId} = this.props
     const {data} = this.state
     let returnData
-    if (defaultSelectedDistrict !== 'Select District') {
+    if (defaultSelectedDistrict !== 'All Districts') {
       const dateKeys = Object.keys(
         data[stateId].districts[defaultSelectedDistrict].dates,
       )
@@ -300,7 +300,7 @@ class StateSpecificChart extends Component {
     const {stateId} = this.props
     const {data} = this.state
     let returnData
-    if (defaultSelectedDistrict !== 'Select District') {
+    if (defaultSelectedDistrict !== 'All Districts') {
       const dateKeys = Object.keys(
         data[stateId].districts[defaultSelectedDistrict].dates,
       )
