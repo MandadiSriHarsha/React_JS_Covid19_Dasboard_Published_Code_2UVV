@@ -436,9 +436,14 @@ class StateSpecificChart extends Component {
               <XAxis
                 dataKey="date"
                 axisLine={{stroke: '#ff073a'}}
+                tickLine={{stroke: '#ff073a'}}
                 tick={{fill: '#ff073a'}}
               />
-              <YAxis axisLine={{stroke: '#ff073a'}} tick={{fill: '#ff073a'}} />
+              <YAxis
+                axisLine={{stroke: '#ff073a'}}
+                tickLine={{stroke: '#ff073a'}}
+                tick={{fill: '#ff073a'}}
+              />
               <Tooltip />
               <Line
                 type="monotone"
@@ -462,9 +467,14 @@ class StateSpecificChart extends Component {
               <XAxis
                 dataKey="date"
                 axisLine={{stroke: '#007BFF'}}
+                tickLine={{stroke: '#007BFF'}}
                 tick={{fill: '#007BFF'}}
               />
-              <YAxis axisLine={{stroke: '#007BFF'}} tick={{fill: '#007BFF'}} />
+              <YAxis
+                axisLine={{stroke: '#007BFF'}}
+                tickLine={{stroke: '#007BFF'}}
+                tick={{fill: '#007BFF'}}
+              />
               <Tooltip />
               <Line
                 type="monotone"
@@ -488,9 +498,14 @@ class StateSpecificChart extends Component {
               <XAxis
                 dataKey="date"
                 axisLine={{stroke: '#27A243'}}
+                tickLine={{stroke: '#27A243'}}
                 tick={{fill: '#27A243'}}
               />
-              <YAxis axisLine={{stroke: '#27A243'}} tick={{fill: '#27A243'}} />
+              <YAxis
+                axisLine={{stroke: '#27A243'}}
+                tickLine={{stroke: '#27A243'}}
+                tick={{fill: '#27A243'}}
+              />
               <Tooltip />
               <Line
                 type="monotone"
@@ -514,9 +529,14 @@ class StateSpecificChart extends Component {
               <XAxis
                 dataKey="date"
                 axisLine={{stroke: '#6C757D'}}
+                tickLine={{stroke: '#6C757D'}}
                 tick={{fill: '#6C757D'}}
               />
-              <YAxis axisLine={{stroke: '#6C757D'}} tick={{fill: '#6C757D'}} />
+              <YAxis
+                axisLine={{stroke: '#6C757D'}}
+                tickLine={{stroke: '#6C757D'}}
+                tick={{fill: '#6C757D'}}
+              />
               <Tooltip />
               <Line
                 type="monotone"
