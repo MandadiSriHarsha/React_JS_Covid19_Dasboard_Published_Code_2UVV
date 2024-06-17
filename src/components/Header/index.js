@@ -71,7 +71,7 @@ const MobileHeader = props => {
           <button
             className="mobile-navbar-show-menu-card-button"
             type="button"
-            onClick={onShowMobileMenuCard}
+            onClick={onShowMobileMenuCard} aria-label="ShowMobileMenu"
           >
             <MdOutlinePlaylistPlay className="mobile-navbar-show-menu-card-button-icon" />
           </button>
@@ -152,7 +152,7 @@ const MobileHeader = props => {
           <button
             className="mobile-navbar-close-menu-card-button"
             type="button"
-            onClick={onCloseMobileMenuCard}
+            onClick={onCloseMobileMenuCard} aria-label="HideMobileMenu"
           >
             <AiFillCloseCircle className="mobile-navbar-close-menu-card-button-icon" />
           </button>
