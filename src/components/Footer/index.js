@@ -13,13 +13,28 @@ const Footer = () => (
       We stand with everyone fighting on the front lines
     </p>
     <div className="footer-icons-container">
-      <a href="https://www.github.com" target="_blank" rel="noreferrer">
+      <a
+        href="https://www.github.com"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Github"
+      >
         <VscGithubAlt className="footer-icon" />
       </a>
-      <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
+      <a
+        href="https://www.instagram.com"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Instagram"
+      >
         <FiInstagram className="footer-icon" />
       </a>
-      <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
+      <a
+        href="https://www.twitter.com"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Twitter"
+      >
         <FaTwitter className="footer-icon" />
       </a>
     </div>
