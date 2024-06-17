@@ -291,6 +291,7 @@ class VaccinationRoute extends Component {
       vaccinationByCompanyList,
       vaccinationByGenderList,
     } = this.state
+    console.log(vaccinationByCompanyList)
     const applyByDosesButtonStyle =
       defaultTrendsOption === 'By Doses' ? 'apply-by-doses-style' : null
     const applyByAgeButtonStyle =
@@ -401,22 +402,23 @@ class VaccinationRoute extends Component {
             : this.renderByAgeChart()}
         </div>
         <div className="vaccination-route-bar-charts-bg-container">
-          <div className="vaccination-by-category-bg-container">
-            <h1 className="vaccination-by-category-container-heading">
-              Vaccination By Category
+          <div className="vaccination-by-pie-bg-container">
+            <h1 className="vaccination-by-pie-container-heading">
+              Vaccination By Gender
             </h1>
-            <div className="temp-bar-container-one">
+            <div className="temp-pie-container">
               <ResponsiveContainer height="100%" width="100%">
                 <PieChart>
                   <Pie
                     cx="50%"
-                    cy="40%"
+                    cy="50%"
                     data={vaccinationByGenderList}
-                    startAngle={180}
+                    startAngle={360}
                     endAngle={0}
-                    innerRadius="60%"
-                    outerRadius="80%"
+                    innerRadius="40%"
+                    outerRadius="65%"
                     dataKey="value"
+                    label
                   >
                     <Cell name="Male" fill="#F54394" />
                     <Cell name="Female" fill="#5A8DEE" />
@@ -426,25 +428,31 @@ class VaccinationRoute extends Component {
                     iconType="circle"
                     iconSize="12px"
                     layout="horizontal"
-                    verticalAlign="middle"
+                    verticalAlign="bottom"
                     align="center"
                     fontSize="12px"
                   />
                 </PieChart>
               </ResponsiveContainer>
             </div>
-            <div className="temp-bar-container-one">
+          </div>
+          <div className="vaccination-by-pie-bg-container">
+            <h1 className="vaccination-by-pie-container-heading">
+              Vaccination By Medical Company
+            </h1>
+            <div className="temp-pie-container">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     cx="50%"
-                    cy="40%"
+                    cy="50%"
                     data={vaccinationByCompanyList}
-                    startAngle={180}
+                    startAngle={360}
                     endAngle={0}
-                    innerRadius="60%"
-                    outerRadius="80%"
+                    innerRadius="40%"
+                    outerRadius="65%"
                     dataKey="value"
+                    label
                   >
                     <Cell name="Covishield" fill="#5A8DEE" />
                     <Cell name="Covaxin" fill="#7AC142" />
@@ -454,7 +462,7 @@ class VaccinationRoute extends Component {
                     iconType="circle"
                     iconSize="12px"
                     layout="horizontal"
-                    verticalAlign="middle"
+                    verticalAlign="bottom"
                     align="center"
                     fontSize="12px"
                   />
@@ -462,11 +470,11 @@ class VaccinationRoute extends Component {
               </ResponsiveContainer>
             </div>
           </div>
-          <div className="vaccination-by-age-bg-container">
-            <h1 className="vaccination-by-age-container-heading">
+          <div className="vaccination-by-pie-bg-container">
+            <h1 className="vaccination-by-pie-container-heading">
               Vaccination By Age
             </h1>
-            <div className="temp-bar-container-two">
+            <div className="temp-pie-container">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
@@ -475,8 +483,9 @@ class VaccinationRoute extends Component {
                     data={vaccinationByAgeListTwo}
                     startAngle={360}
                     endAngle={0}
-                    outerRadius="95%"
+                    outerRadius="85%"
                     dataKey="value"
+                    label
                   >
                     <Cell name="18-45" fill="#A3DF9F" />
                     <Cell name="45-60" fill="#64C2A6" />

@@ -31,6 +31,7 @@
   background-color: #2f2f43;
   border: none;
   border-radius: 7px;
+  border: 2px solid #828282;
 }
 
 .search-icon {
@@ -303,7 +304,7 @@
 
 .sort-button {
   background: transparent;
-  outline: none;
+  outline: none !important;
   cursor: pointer;
   border: none;
   margin: 0px 10px 0px 10px;

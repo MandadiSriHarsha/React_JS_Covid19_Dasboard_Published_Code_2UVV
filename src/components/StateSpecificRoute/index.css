@@ -164,9 +164,29 @@
   background: none;
   border: none;
   cursor: pointer;
-  outline: none;
+  outline: none !important;
   border-radius: 10px;
   padding: 25px 30px 25px 30px;
+}
+
+#stateSpecificConfirmedCasesContainer:hover {
+  background-color: #331427;
+  border-radius: 10px;
+}
+
+#stateSpecificActiveCasesContainer:hover {
+  background-color: #132240;
+  border-radius: 10px;
+}
+
+#stateSpecificRecoveredCasesContainer:hover {
+  background-color: #182829;
+  border-radius: 10px;
+}
+
+#stateSpecificDeceasedCasesContainer:hover {
+  background-color: #212230;
+  border-radius: 10px;
 }
 
 .state-specific-overall-stats-card-button-heading {

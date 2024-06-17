@@ -57,7 +57,7 @@
   color: #ffffff;
   border-radius: 8px;
   cursor: pointer;
-  outline: none;
+  outline: none !important;
   border: 2px solid #2304f1;
   font-size: 17px;
   font-weight: 500;

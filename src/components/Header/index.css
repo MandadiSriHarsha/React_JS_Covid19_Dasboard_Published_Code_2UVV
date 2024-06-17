@@ -1,12 +1,7 @@
 .application-navbar {
   width: 100%;
   background-color: #1e1e30 !important;
-}
-
-@media screen and (min-width: 768px) {
-  .application-navbar {
-    border-bottom: 1px solid #3b82f6;
-  }
+  border-bottom: 2px solid #3b82f6;
 }
 
 .navbar-display-card {
@@ -29,7 +24,7 @@
   color: #ffffff;
   text-decoration: none !important;
   cursor: pointer;
-  outline: none;
+  outline: none !important;
   margin: 0px 10px 0px 10px;
   padding: 0px 0px 0px 0px;
 }
@@ -73,7 +68,7 @@
   cursor: pointer;
   padding: 0px 0px 0px 0px;
   margin: 0px 10px 0px 10px;
-  outline: none;
+  outline: none !important;
 }
 
 @media screen and (min-width: 768px) {
@@ -114,7 +109,7 @@
   font-weight: 400;
   border: none;
   background: transparent;
-  outline: none;
+  outline: none !important;
 }
 
 .desktop-navbar-menu-card-item:hover {
@@ -150,7 +145,6 @@
   align-items: center;
   padding: 20px 20px 5px 20px;
   margin: 0px 0px 0px 0px;
-  border-bottom: 1px solid #3b82f6;
 }
 
 @media screen and (min-width: 768px) {
@@ -169,7 +163,7 @@
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 15px 0px;
   cursor: pointer;
-  outline: none;
+  outline: none !important;
 }
 
 .mobile-navbar-menu-card-content-card-option-item {
