@@ -291,7 +291,6 @@ class VaccinationRoute extends Component {
       vaccinationByCompanyList,
       vaccinationByGenderList,
     } = this.state
-    console.log(vaccinationByCompanyList)
     const applyByDosesButtonStyle =
       defaultTrendsOption === 'By Doses' ? 'apply-by-doses-style' : null
     const applyByAgeButtonStyle =
